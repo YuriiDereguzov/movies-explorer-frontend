@@ -1,18 +1,21 @@
-import { Link } from "react-router-dom";
-// import logo from "../../images/logo.svg";
+import logo from "../../images/logo.svg";
 
 function Header() {
   return (
-    <header className="header">
-      {/* <img src={logo} alt="Логотип" /> */}
-      <nav className="header__links">
-        <Link to="/sign-up" className="header__link">
-          Регистрация
-        </Link>
-        <Link to="/sign-in" className="header__link">
-          Войти
-        </Link>
-      </nav>
+    <header className="header header_background">
+      <div className="header__container">
+        <div className="header__logo-column">
+          <img className="header__logo" src={logo} alt="Логотип" />
+        </div>
+        <nav className="header__links-column">
+          <a href="sign-up" className="header__register-button">
+            Регистрация
+          </a>
+          <a href="/sign-in" className="header__login-button">
+            Войти
+          </a>
+        </nav>
+      </div>
     </header>
   );
 }
