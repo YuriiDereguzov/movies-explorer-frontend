@@ -1,4 +1,4 @@
-import Promo from "../Promo";
+import Promo from "../Promo/Promo";
 
 function Main() {
   return (
