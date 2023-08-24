@@ -33,13 +33,14 @@
   justify-content: space-between;
   border-bottom: #e8e8e8 solid 1px;
   padding-bottom: 19px;
-  transition: .5s;
+  transition: 0.5s;
 }
 
-.portfolio__link:hover{
-    font-size: 33px;
+.portfolio__link:hover {
+  font-size: 33px;
+  opacity: 60%;
 }
 
-.portfolio__link-item {
+.portfolio__link-name {
   margin: 0;
 }

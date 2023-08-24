@@ -30,10 +30,6 @@
   transition: 0.5s;
 }
 
-.header__logo:hover {
-  width: 45px;
-}
-
 .header__register-button {
   text-decoration: none;
   font-weight: 500;
@@ -45,7 +41,7 @@
 
 .header__register-button:hover {
   font-size: 16px;
-  color: #878787;
+  opacity: 60%;
 }
 
 .header__login-button {

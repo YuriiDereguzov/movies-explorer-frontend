@@ -53,6 +53,7 @@
 }
 .profile__link:hover {
   font-size: 17px;
+  opacity: 60%;
 }
 
 .profile__photo {
