@@ -12,8 +12,8 @@
   align-items: center;
 }
 
-.techs__header {
-  margin-top: 100px;
+.techs__title {
+  margin-top: 110px;
   margin-bottom: 0;
   padding-bottom: 23px;
   width: 100%;
@@ -22,7 +22,7 @@
   border-bottom: rgba(0, 0, 0, 1) solid 1px;
 }
 
-.techs__title {
+.techs__subtitle {
   margin: 90px auto 26px;
   font-weight: 400;
   font-size: 50px;

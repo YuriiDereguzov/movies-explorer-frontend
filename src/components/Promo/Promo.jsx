@@ -11,12 +11,12 @@ function Promo() {
           <p className="promo__subtitle">
             Листайте ниже, чтобы узнать больше про этот проект и его создателя.
           </p>
-          <a href="/" className="promo__button">
+          <a href="/#" className="promo__button">
             Узнать больше
           </a>
         </div>
         <div className="promo__logo-container">
-          <img className="promo__logo" src={landingLogo} alt="logo"></img>
+          <img className="promo__logo" src={landingLogo} alt="landingLogo" />
         </div>
       </div>
     </section>

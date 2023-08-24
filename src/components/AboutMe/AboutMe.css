@@ -1,0 +1,60 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  max-width: 1280px;
+  width: 90%;
+  margin: auto;
+}
+
+.profile__title {
+  margin-top: 110px;
+  margin-bottom: 0;
+  padding-bottom: 23px;
+  width: 100%;
+  font-weight: 400;
+  font-size: 22px;
+  border-bottom: rgba(0, 0, 0, 1) solid 1px;
+}
+
+.profile__contaner {
+  display: flex;
+  justify-content: space-between;
+  margin: 66px 0 0;
+}
+
+.profile__info {
+  max-width: 600px;
+}
+
+.profile__name {
+  margin: 0;
+  font-weight: 400;
+  font-size: 50px;
+}
+
+.profile__job {
+  margin: 18px 0 26px;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.profile__description {
+  margin: 0 0 100px;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.profile__link {
+  font-weight: 500;
+  font-size: 14px;
+  text-decoration: none;
+  transition: 0.5s;
+  color: #000000;
+}
+.profile__link:hover {
+  font-size: 17px;
+}
+
+.profile__photo {
+  object-fit: cover;
+}

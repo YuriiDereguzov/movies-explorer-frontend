@@ -11,7 +11,7 @@ function Header() {
           <a href="sign-up" className="header__register-button">
             Регистрация
           </a>
-          <a href="/sign-in" className="header__login-button">
+          <a href="sign-in" className="header__login-button">
             Войти
           </a>
         </nav>
