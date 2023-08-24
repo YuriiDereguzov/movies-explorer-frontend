@@ -1,7 +1,7 @@
 .project {
   display: flex;
   flex-direction: column;
-  max-width: 1140px;
+  max-width: 1280px;
   width: 90%;
   min-height: 608px;
   margin: auto;

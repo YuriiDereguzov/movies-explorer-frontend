@@ -2,7 +2,7 @@ import landingLogo from "../../images/landing-logo.svg";
 
 function Promo() {
   return (
-    <div className="promo header_background">
+    <section className="promo header_background">
       <div className="promo__container">
         <div className="promo__title-container">
           <h1 className="promo__title">
@@ -19,7 +19,7 @@ function Promo() {
           <img className="promo__logo" src={landingLogo} alt="logo"></img>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
