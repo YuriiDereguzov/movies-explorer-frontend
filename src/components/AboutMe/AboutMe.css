@@ -59,3 +59,69 @@
 .profile__photo {
   object-fit: cover;
 }
+
+@media screen and (max-width: 768px) {
+  .profile__title {
+    margin-top: 90px;
+  }
+
+  .profile__name {
+    font-size: 40px;
+  }
+  .profile__job {
+    margin: 16px 0 20px;
+    font-size: 12px;
+  }
+
+  .profile__description {
+    margin: 0 0 87px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .profile__photo {
+    max-height: 307px;
+  }
+
+  .profile__contaner {
+    gap: 49px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .profile__contaner {
+    flex-direction: column-reverse;
+  }
+
+  .photo_location {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .profile__title {
+    margin-top: 70px;
+    padding-bottom: 28px;
+    font-size: 18px;
+  }
+
+  .profile__contaner {
+    margin-top: 60px;
+    gap: 40px;
+  }
+
+  .profile__name {
+    font-size: 30px;
+  }
+
+  .profile__job {
+    margin: 20px 0;
+    font-size: 11px;
+  }
+
+  .profile__description {
+    margin: 0 0 40px;
+    font-size: 11px;
+    line-height: 16px;
+  }
+}

@@ -44,3 +44,36 @@
 .portfolio__link-name {
   margin: 0;
 }
+
+@media screen and (max-width: 768px) {
+  .portfolio__title {
+    margin-top: 90px;
+  }
+
+  .portfolio__link {
+    font-size: 28px;
+  }
+
+  .portfolio__list {
+    margin: 0 0 109px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .portfolio__title {
+    margin: 70px 0 40px;
+    font-size: 14px;
+  }
+
+  .portfolio__link {
+    font-size: 18px;
+  }
+
+  .portfolio__list {
+    margin: 0 0 51px;
+  }
+
+  .portfolio__link-icon {
+    max-width: 13px;
+  }
+}

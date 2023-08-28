@@ -66,3 +66,16 @@
   min-height: 35px;
   font-size: 15px;
 }
+
+@media screen and (max-width: 500px) {
+  .header__login-button {
+    font-size: 10px;
+    min-width: 54px;
+    min-height: 26px;
+    margin-left: 14px;
+  }
+
+  .header__register-button {
+    font-size: 10px;
+  }
+}

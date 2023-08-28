@@ -19,7 +19,7 @@ function AboutMe() {
             Github
           </a>
         </div>
-        <div className="profile__info">
+        <div className="profile__info photo_location">
           <img className="profile__photo" src={photo} alt="Фотография" />
         </div>
       </div>
