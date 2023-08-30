@@ -4,10 +4,10 @@ function Header() {
   return (
     <header className="header header_background">
       <div className="header__container">
-        <div className="header__logo-column">
-          <img className="header__logo" src={logo} alt="Логотип" />
+        <div className="header__logo">
+          <img className="header__logo-img" src={logo} alt="Логотип" />
         </div>
-        <nav className="header__links-column">
+        <nav className="header__navigation">
           <a href="sign-up" className="header__register-button">
             Регистрация
           </a>
