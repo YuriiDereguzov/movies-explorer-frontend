@@ -57,6 +57,10 @@
   .portfolio__list {
     margin: 0 0 109px;
   }
+
+  .portfolio__link:hover {
+    font-size: 31px;
+  }
 }
 
 @media screen and (max-width: 500px) {
@@ -75,5 +79,9 @@
 
   .portfolio__link-icon {
     max-width: 13px;
+  }
+
+  .portfolio__link:hover {
+    font-size: 21px;
   }
 }
