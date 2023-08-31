@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 function Register(props) {
   return (
     <section className="auth">
-      <a href="/">
+      <Link to="/">
         <img className="auth__logo" src={logo} alt="Логотип" />
-      </a>
+      </Link>
       <h2 className="auth__title">{props.title}</h2>
       <form onSubmit={props.onSubmit} className="form" name="form">
         {props.children}
