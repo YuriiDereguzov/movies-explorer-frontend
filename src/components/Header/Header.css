@@ -52,6 +52,7 @@
   background-repeat: no-repeat;
   height: 32px;
   width: 100px;
+  border-radius: 15px;
 }
 .header__navigation-account:hover {
   background-size: 135px;

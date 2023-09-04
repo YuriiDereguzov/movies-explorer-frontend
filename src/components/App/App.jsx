@@ -6,7 +6,7 @@ import Footer from "../Footer/Footer";
 import Notfound from "../NotFound/NotFound";
 import Register from "../Form/Register";
 import Login from "../Form/Login";
-import "./App.css";
+import Searchform from "../SearchForm/SearchForm";
 
 function App() {
   return (
@@ -27,8 +27,8 @@ function App() {
           element={
             <>
               <Header />
-              {/* <Searchform />
-              <Movies  /> */}
+              <Searchform />
+              {/* <Movies  /> */}
               <Footer />
             </>
           }

@@ -1,0 +1,43 @@
+.checkbox {
+  margin-right: 14px;
+  width: 34px;
+  height: 14px;
+  cursor: pointer;
+  position: relative;
+}
+
+.checkbox input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox input[type="checkbox"]:checked + .checkbox__button {
+  background-color: #2be080;
+}
+
+.checkbox .checkbox__button {
+  background-color: #ccc;
+  border-radius: 100px;
+  width: 100%;
+  height: 100%;
+}
+
+.checkbox .checkbox__button-toggler {
+  position: absolute;
+  transition: all 300ms ease;
+}
+
+.checkbox
+  input[type="checkbox"]:checked
+  + .checkbox__button
+  .checkbox__button-toggler {
+  left: calc(100% - 12px);
+}
+
+.checkbox .checkbox__button-toggler {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  left: 2px;
+  top: 2px;
+  background-color: #ffffff;
+}
