@@ -53,3 +53,29 @@
   font-size: 13px;
   line-height: 18px;
 }
+
+@media screen and (max-width: 768px) {
+  .search__form {
+    margin: 80px auto 30px;
+  }
+
+  .search__form-filter {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .filter__name {
+    flex-direction: row-reverse;
+    gap: 16px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .search__form {
+    margin-bottom: 40px;
+  }
+
+  .search__form-filter {
+    justify-content: center;
+  }
+}
