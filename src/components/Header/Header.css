@@ -19,6 +19,7 @@
 .header__logo {
   display: flex;
   align-items: center;
+  width: 100px;
 }
 
 .header__logo-img {
@@ -42,7 +43,7 @@
   margin-right: 16px;
 }
 .navigation__link:hover {
-  font-size: 17px;
+  font-size: 15px;
   opacity: 60%;
 }
 

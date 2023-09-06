@@ -11,7 +11,7 @@ function Header() {
         <Link to="/" className="header__logo">
           <img className="header__logo-img" src={logo} alt="Логотип" />
         </Link>
-        {path === "/movies" || path === "/saved-movies" ? (
+        {path === "/movies" || path === "/saved-movies" || path === "/profile" ? (
           <>
             <nav className="header__navigation">
               <Link to="/movies" className="navigation__link">

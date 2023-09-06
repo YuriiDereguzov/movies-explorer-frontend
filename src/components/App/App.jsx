@@ -8,6 +8,7 @@ import Register from "../Form/Register";
 import Login from "../Form/Login";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
+import Profile from "../Profile/Profile";
 
 function App() {
   return (
@@ -48,7 +49,7 @@ function App() {
           element={
             <>
               <Header />
-              {/* <Profile /> */}
+              <Profile />
             </>
           }
         />

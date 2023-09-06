@@ -27,8 +27,8 @@
 
 .search__form-submit {
   background: rgba(52, 86, 243, 1);
-  width: 59px;
-  height: 34px;
+  min-width: 59px;
+  min-height: 34px;
   border-radius: 15px;
   color: #ffffff;
   border: none;
@@ -39,6 +39,11 @@
   text-align: center;
   margin: 0 0 0 22px;
   padding: 0;
+  transition: 0.5s;
+}
+.search__form-submit:hover {
+  min-width: 62px;
+  font-size: 13px;
 }
 
 .search__form-filter {

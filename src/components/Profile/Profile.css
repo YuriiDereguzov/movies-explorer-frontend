@@ -1,0 +1,86 @@
+.user {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  max-width: 1280px;
+  align-items: center;
+}
+
+.user__title {
+  margin: 74px 0 124px;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.user__form {
+  min-width: 410px;
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+
+.user__label {
+  display: flex;
+}
+.user__label:first-of-type {
+  padding: 0 0 16px;
+  border-bottom: rgba(232, 232, 232, 1) solid 1px;
+}
+
+.user__placeholder {
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 13px;
+  margin: 0;
+  padding: 3px;
+  min-width: max-content;
+}
+
+.user__input {
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13px;
+  border: none;
+  text-align: end;
+  width: 100%;
+  padding: 3px;
+}
+.user__input:focus {
+  outline: rgba(0, 0, 0, 1) solid 1px;
+}
+
+.user__edit {
+  border: none;
+  background-color: #ffffff;
+  cursor: pointer;
+  margin: 203px auto 16px;
+  font-weight: 400;
+  font-size: 13px;
+  transition: 0.5s;
+}
+
+.user__edit:hover {
+  font-size: 16px;
+  opacity: 60%;
+}
+
+.user__link {
+  color: #ff3055;
+  font-weight: 500;
+  font-size: 13px;
+  text-decoration: none;
+  transition: 0.5s;
+}
+
+.user__link:hover {
+  font-size: 16px;
+  opacity: 60%;
+}
+
+@media screen and (max-width: 500px) {
+  .user__form {
+    min-width: 260px;
+  }
+}
