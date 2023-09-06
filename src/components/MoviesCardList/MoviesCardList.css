@@ -1,0 +1,43 @@
+.cards {
+  margin: 70px auto 0;
+  width: 90%;
+  max-width: 1280px;
+}
+
+.cards__list {
+  margin-bottom: 60px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 38px 20px;
+}
+
+.cards__button {
+  padding: 0;
+  margin: 0 auto 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 320px;
+  min-height: 36px;
+  border: none;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1024px) {
+  .cards__list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (max-width: 768px) {
+  .cards__list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .cards__list {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

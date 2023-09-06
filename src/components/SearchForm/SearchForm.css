@@ -48,6 +48,7 @@
 
 .filter__name {
   display: flex;
+  gap: 14px;
   align-items: center;
   font-weight: 400;
   font-size: 13px;

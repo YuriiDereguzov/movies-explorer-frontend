@@ -3,10 +3,11 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
-import Notfound from "../NotFound/NotFound";
+import NotFound from "../NotFound/NotFound";
 import Register from "../Form/Register";
 import Login from "../Form/Login";
-import Searchform from "../SearchForm/SearchForm";
+import Movies from "../Movies/Movies";
+import SavedMovies from "../SavedMovies/SavedMovies";
 
 function App() {
   return (
@@ -27,8 +28,7 @@ function App() {
           element={
             <>
               <Header />
-              <Searchform />
-              {/* <Movies  /> */}
+              <Movies />
               <Footer />
             </>
           }
@@ -38,10 +38,7 @@ function App() {
           element={
             <>
               <Header />
-              {/* <Searchform />
-              <Movies
-                movies={movies.filter((movie) => movie.saved === true)}
-              /> */}
+              <SavedMovies />
               <Footer />
             </>
           }
@@ -71,7 +68,7 @@ function App() {
             </>
           }
         />
-        <Route path="/404" element={<Notfound />} />
+        <Route path="/404" element={<NotFound />} />
         <Route path="*" element={<Navigate to="/404" replace />} />
       </Routes>
     </div>
