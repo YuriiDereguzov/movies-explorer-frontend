@@ -49,6 +49,7 @@
 .search__form-filter {
   margin: 0 auto 47px;
   width: 90%;
+  max-width: 1280px;
 }
 
 .filter__name {

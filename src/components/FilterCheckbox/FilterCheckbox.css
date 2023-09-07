@@ -2,7 +2,7 @@
   width: 34px;
   height: 14px;
   cursor: pointer;
-  position: relative;
+  /* position: relative; */
 }
 
 .checkbox input[type="checkbox"] {
@@ -21,7 +21,8 @@
 }
 
 .checkbox .checkbox__button-toggler {
-  position: absolute;
+  position: relative;
+  /* position: absolute; */
   transition: all 300ms ease;
 }
 
