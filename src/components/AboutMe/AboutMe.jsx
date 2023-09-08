@@ -15,7 +15,7 @@ function AboutMe() {
             Контур». После того, как прошёл курс по веб-разработке, начал
             заниматься фриланс-заказами и ушёл с постоянной работы.
           </p>
-          <a href="/#" className="profile__link">
+          <a href="https://github.com/YuriiDereguzov" className="profile__link">
             Github
           </a>
         </div>
