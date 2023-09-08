@@ -1,7 +1,9 @@
 .footer {
   /* width: 100%; */
-  /* max-width: 1280px; */
-  /* margin: auto; */
+  width: 90%;
+  max-width: 1280px;
+  margin: auto;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,8 +17,9 @@
 }
 
 .footer__info {
-  width: 90%;
-  max-width: 1280px;
+  width: 100%;
+  /* width: 90%; */
+  /* max-width: 1280px; */
   display: flex;
   justify-content: space-between;
   border-top: #e8e8e8 1px solid;
