@@ -1,11 +1,47 @@
 # movies-explorer-frontend
-# Дипломный проект Яндекс.Практикум "Веб-разработчик". Фронтенд часть.
+
+## Дипломный проект Яндекс.Практикум "Веб-разработчик". Фронтенд часть.
+
+### Краткое описание:
+
+Сервис кинопоиска. Есть регистрация и авторизация аккаунта, возможность поиска фильмов в базе, а так же их сохранения в л/к.
+
+## Ссылки на проект:
+
+Frontend
+
+[Макет] — https://www.figma.com/file/6FMWkB94wE7KTkcCgUXtnC/light-1?type=design&node-id=891-3857&mode=design&t=k7odHyk50pt3z1c4-0
+
+[GitHub] — https://github.com/YuriiDereguzov/movies-explorer-frontend
+
+[Deploy] — https://...
+
+Backend
+
+[GitHub] — https://github.com/YuriiDereguzov/movies-explorer-api
+
+[Deploy] — https://api.kinopoisk.nomoredomains.rocks
+
+# Технологии:
+
+<ul>
+  <li>HTML</li>
+  <li>CSS</li>
+  <li>JavaScript</li>
+  <li>React</li>
+  <li>API</li>
+  <li>БЭМ</li>
+  <li>Адаптивная вёрстка</li>
+  <li>Flexbox</li>
+  <li>Grid</li>
+</ul>
 
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
+
 ### Краткое описание:
 
 In the project directory, you can run:
