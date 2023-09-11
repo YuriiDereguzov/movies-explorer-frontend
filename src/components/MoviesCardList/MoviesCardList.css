@@ -1,11 +1,14 @@
 .cards {
-  margin: 70px auto 0;
+  /* margin: 70px auto 0; */
+  margin: 107px auto 0;
   width: 90%;
-  max-width: 1280px;
+  max-width: 1140px;
+  min-height: 493px;
 }
 
 .cards__list {
-  margin-bottom: 60px;
+  /* margin-bottom: 43px; */
+  margin-bottom: auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 38px 20px;
@@ -13,7 +16,8 @@
 
 .cards__button {
   padding: 0;
-  margin: 0 auto 80px;
+  /* margin: 0 auto 91px; */
+  margin: 44px auto 91px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,15 +34,29 @@
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
 @media screen and (max-width: 768px) {
+  .cards {
+    margin: 125px auto 0;
+    width: 92%;
+    min-height: 736px;
+  }
+
   .cards__list {
     grid-template-columns: repeat(2, 1fr);
     gap: 30px;
   }
 }
+
 @media screen and (max-width: 500px) {
+  .cards {
+    margin-top: 88px;
+    min-height: 970px;
+  }
+
   .cards__list {
     grid-template-columns: repeat(1, 1fr);
+    margin-bottom: 51px;
   }
 
   .cards__button {
