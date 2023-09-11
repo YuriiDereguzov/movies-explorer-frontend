@@ -10,7 +10,7 @@
   margin: auto;
   display: flex;
   width: 90%;
-  max-width: 1280px;
+  max-width: 1140px;
   min-height: 74px;
   align-items: center;
   justify-content: space-between;
@@ -175,6 +175,10 @@
 }
 
 @media screen and (max-width: 768px) {
+  .header__container {
+    width: 92%;
+  }
+
   .header__burger-close {
     display: block;
   }
