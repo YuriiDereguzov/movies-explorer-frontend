@@ -8,13 +8,15 @@
 }
 
 .user__title {
-  margin: 74px 0 124px;
+  margin: 74px 0 122px;
   font-weight: 500;
   font-size: 24px;
   line-height: 29px;
 }
 
 .user__form {
+  min-height: 300px;
+
   min-width: 410px;
   display: flex;
   flex-direction: column;
@@ -25,7 +27,7 @@
   display: flex;
 }
 .user__label:first-of-type {
-  padding: 0 0 16px;
+  padding: 0 0 11px;
   border-bottom: rgba(232, 232, 232, 1) solid 1px;
 }
 
@@ -55,7 +57,7 @@
   border: none;
   background-color: #ffffff;
   cursor: pointer;
-  margin: 203px auto 16px;
+  margin: auto 0 0;
   font-weight: 400;
   font-size: 13px;
   transition: 0.5s;
@@ -67,6 +69,7 @@
 }
 
 .user__link {
+  margin: 15px;
   color: #ff3055;
   font-weight: 500;
   font-size: 13px;
@@ -79,8 +82,35 @@
   opacity: 60%;
 }
 
+@media screen and (max-width: 768px) {
+  .user {
+    margin: auto;
+  }
+
+  .user__title {
+    margin: 0px 0 90px;
+  }
+
+  .user__link {
+    margin: 15px 0 32px;
+  }
+}
+
 @media screen and (max-width: 500px) {
+  .user {
+    margin: auto auto 0;
+  }
+
   .user__form {
     min-width: 260px;
+    min-height: 59vh;
+  }
+
+  .user__title {
+    margin: 0px 0 80px;
+  }
+
+  .user__link {
+    margin: 15px 0 40px;
   }
 }
