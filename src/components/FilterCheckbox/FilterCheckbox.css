@@ -18,10 +18,11 @@
   border-radius: 100px;
   width: 100%;
   height: 100%;
+  padding: 1px 0;
 }
 
 .checkbox .checkbox__button-toggler {
-  position: relative;
+  /* position: relative; */
   /* position: absolute; */
   transition: all 300ms ease;
 }
@@ -30,14 +31,18 @@
   input[type="checkbox"]:checked
   + .checkbox__button
   .checkbox__button-toggler {
-  left: calc(100% - 12px);
+  /* left: calc(100% - 12px); */
+  margin: 2px calc(100% - 12px);
 }
 
 .checkbox .checkbox__button-toggler {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  left: 2px;
-  top: 2px;
+  /* left: 2px;
+  top: 2px; */
   background-color: #ffffff;
+}
+.checkbox__button-toggler {
+  margin: 2px;
 }
