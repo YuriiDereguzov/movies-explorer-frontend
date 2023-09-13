@@ -1,4 +1,5 @@
 import logo from "../../images/logo.svg";
+import icon from "../../images/icon-account.svg";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
@@ -13,7 +14,9 @@ function Header() {
   }
 
   return (
-    <header className={path === "/" ? "header header__background_gren" : "header"}>
+    <header
+      className={path === "/" ? "header header__background_gren" : "header"}
+    >
       <div className="header__container">
         <Link to="/" className="header__logo">
           <img className="header__logo-img" src={logo} alt="Логотип" />
@@ -23,12 +26,16 @@ function Header() {
         path === "/profile" ? (
           <>
             <nav
-              className={`header__navigation ${isOpen ? "header__navigation_opened" : ""}`}
+              className={`header__navigation ${
+                isOpen ? "header__navigation_opened" : ""
+              }`}
             >
               <ul className="header__navigation-container">
                 <li
                   className={
-                    isOpen ? "header__navigation-links" : "header__navigation-links_inactive"
+                    isOpen
+                      ? "header__navigation-links"
+                      : "header__navigation-links_inactive"
                   }
                 >
                   <Link to="/" className="header__navigation-link">
@@ -46,7 +53,9 @@ function Header() {
                 </li>
                 <li
                   className={`header__navigation-links ${
-                    path === "/saved-movies" ? "header__navigation-links_active" : ""
+                    path === "/saved-movies"
+                      ? "header__navigation-links_active"
+                      : ""
                   }`}
                 >
                   <Link to="/saved-movies" className="header__navigation-link">
@@ -59,12 +68,31 @@ function Header() {
               to="/profile"
               className={
                 path === "/"
+                  ? "header__navigation-account header__navigation-account_background_green"
+                  : `header__navigation-account ${
+                      isOpen ? "header__navigation_opened" : ""
+                    }`
+              }
+            >
+              <p className="header__navigation-text">Аккаунт</p>
+              <div className="header__navigation-background">
+                <img
+                  className="header__navigation-icon"
+                  src={icon}
+                  alt="Профиль"
+                />
+              </div>
+            </Link>
+            {/* <Link
+              to="/profile"
+              className={
+                path === "/"
                   ? "header__navigation-account header__navigation-account_background_black"
                   : `header__navigation-account header__navigation-account_background_white ${
                       isOpen ? "header__navigation_opened" : ""
                     }`
               }
-            ></Link>
+            ></Link> */}
             {!isOpen ? (
               <div className="header__burger" onClick={handleOpenMenu}>
                 <div className="header__burger-line"></div>

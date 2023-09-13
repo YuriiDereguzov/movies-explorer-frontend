@@ -1,3 +1,43 @@
+.header__navigation-account {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  width: 100px;
+  border-radius: 16px;
+  text-decoration: none;
+  color: #000000;
+  transition: 0.5s;
+}
+
+.header__navigation-text:hover {
+  font-size: 14px;
+  opacity: 60%;
+}
+
+.header__navigation-text {
+  margin: 0 7px;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 12px;
+}
+
+.header__navigation-background {
+  width: 26px;
+  height: 26px;
+  text-align: center;
+  background: #F9F9F9;
+  border-radius: 50%;
+}
+
+.header__navigation-icon {
+  margin: 6px auto;
+}
+
+.header__navigation-account_background_green {
+  background-color: #2BE080;
+}
+
 .header {
   width: 100%;
 }
@@ -57,7 +97,7 @@
   opacity: 60%;
 }
 
-.header__navigation-account {
+/* .header__navigation-account {
   background-position-y: 40%;
   background-position-x: 50%;
   background-repeat: no-repeat;
@@ -69,7 +109,7 @@
 
 .header__navigation-account:hover {
   background-size: 135px;
-}
+} */
 
 .header__register-link {
   text-decoration: none;
@@ -166,16 +206,16 @@
   margin-right: 16px;
 }
 
-.header__navigation-account_background_black {
+/* .header__navigation-account_background_black {
   background-image: url("../../images/profile.jpg");
-}
+} */
 /* .background_black {
   background-image: url("../../images/profile.jpg");
 } */
 
-.header__navigation-account_background_white {
+/* .header__navigation-account_background_white {
   background-image: url("../../images/profileWhite.jpg");
-}
+} */
 /* .background_white {
   background-image: url("../../images/profileWhite.jpg");
 } */
