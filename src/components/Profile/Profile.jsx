@@ -25,7 +25,7 @@ function Profile() {
           <input
             type="name"
             className="user__input"
-            name="Name"
+            name="name"
             id="name"
             value={name || ""}
             placeholder="Виталий"
@@ -37,7 +37,7 @@ function Profile() {
           <input
             type="email"
             className="user__input"
-            name="Email"
+            name="email"
             id="email"
             value={email || ""}
             placeholder="pochta@yandex.ru"

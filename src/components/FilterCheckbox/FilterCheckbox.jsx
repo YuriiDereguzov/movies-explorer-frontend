@@ -13,6 +13,8 @@ function FilterCheckbox(props) {
       <input
         type="checkbox"
         className="checkbox__input"
+        name="checkbox"
+        id="checkbox"
         // checked={checked}
         // onChange={handleChange}
       ></input>

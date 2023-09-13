@@ -34,9 +34,10 @@ function Register(props) {
         <input
           type="text"
           className="form__input"
-          name="Name"
+          name="name"
           id="register-name"
           value={name || ""}
+          placeholder="Виталий"
           onChange={handleNameChange}
           required
         />
@@ -45,9 +46,10 @@ function Register(props) {
         <input
           type="email"
           className="form__input"
-          name="Email"
+          name="email"
           id="register-email"
           value={email || ""}
+          placeholder="pochta@yandex.ru"
           onChange={handleEmailChange}
           required
         />
@@ -59,6 +61,7 @@ function Register(props) {
           name="password"
           id="register-password"
           value={password || ""}
+          placeholder="password"
           onChange={handlePasswordChange}
           required
         />

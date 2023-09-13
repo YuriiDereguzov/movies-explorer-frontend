@@ -26,7 +26,7 @@
   width: 26px;
   height: 26px;
   text-align: center;
-  background: #F9F9F9;
+  background: #f9f9f9;
   border-radius: 50%;
 }
 
@@ -35,7 +35,7 @@
 }
 
 .header__navigation-account_background_green {
-  background-color: #2BE080;
+  background-color: #2be080;
 }
 
 .header {
