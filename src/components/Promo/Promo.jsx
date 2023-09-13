@@ -2,7 +2,7 @@ import landingLogo from "../../images/landing-logo.svg";
 
 function Promo() {
   return (
-    <section className="promo header_background">
+    <section className="promo header__background_gren">
       <div className="promo__container">
         <div className="promo__title-container">
           <h1 className="promo__title">

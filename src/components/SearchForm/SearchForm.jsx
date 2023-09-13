@@ -30,7 +30,7 @@ function SearchForm({ props }) {
         </button>
       </form>
       <div className="search__form-filter">
-        <label className="filter__name">
+        <label className="search__filter-name">
           {/* <FilterCheckbox checkboxChange={props.checkboxChange} /> */}
           <FilterCheckbox />
           Короткометражки

@@ -24,13 +24,13 @@ function AboutProject() {
       </ul>
       <div className="project__duration">
         <div className="project__duration-column">
-          <div className="project__duration-time project__duration-time_one">
+          <div className="project__duration-time project__duration-time_theme_primary">
             1 неделя
           </div>
           <p className="project__duration-name">Back-end</p>
         </div>
         <div className="project__duration-column">
-          <div className="project__duration-time project__duration-time_two">
+          <div className="project__duration-time project__duration-time_theme_grey">
             4 недели
           </div>
           <p className="project__duration-name">Front-end</p>

@@ -43,6 +43,10 @@
   gap: 20px;
 }
 
+.footer__link-container {
+  font-size: 13px;
+}
+
 .footer__link {
   text-decoration: none;
   color: #000000;

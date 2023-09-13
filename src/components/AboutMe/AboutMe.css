@@ -103,9 +103,12 @@
     flex-direction: column-reverse;
   }
 
-  .photo_location {
+  .profile__info_photo_location {
     text-align: center;
   }
+  /* .photo_location {
+    text-align: center;
+  } */
 }
 
 @media screen and (max-width: 500px) {

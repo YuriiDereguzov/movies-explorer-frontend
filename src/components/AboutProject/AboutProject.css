@@ -78,11 +78,11 @@
   text-align: center;
 }
 
-.project__duration-time_one {
+.project__duration-time_theme_primary {
   background: #2be080;
 }
 
-.project__duration-time_two {
+.project__duration-time_theme_grey {
   background: #f2f2f2;
 }
 

@@ -13,7 +13,7 @@ function Header() {
   }
 
   return (
-    <header className={path === "/" ? "header header_background" : "header"}>
+    <header className={path === "/" ? "header header__background_gren" : "header"}>
       <div className="header__container">
         <Link to="/" className="header__logo">
           <img className="header__logo-img" src={logo} alt="Логотип" />
@@ -23,33 +23,33 @@ function Header() {
         path === "/profile" ? (
           <>
             <nav
-              className={`header__navigation ${isOpen ? "menu_opened" : ""}`}
+              className={`header__navigation ${isOpen ? "header__navigation_opened" : ""}`}
             >
-              <ul className="navigation__container">
+              <ul className="header__navigation-container">
                 <li
                   className={
-                    isOpen ? "navigation__link-item" : "display_inactive"
+                    isOpen ? "header__navigation-links" : "header__navigation-links_inactive"
                   }
                 >
-                  <Link to="/" className="navigation__link">
+                  <Link to="/" className="header__navigation-link">
                     Главная
                   </Link>
                 </li>
                 <li
-                  className={`navigation__link-item ${
-                    path === "/movies" ? "link_active" : ""
+                  className={`header__navigation-links ${
+                    path === "/movies" ? "header__navigation-links_active" : ""
                   }`}
                 >
-                  <Link to="/movies" className="navigation__link">
+                  <Link to="/movies" className="header__navigation-link">
                     Фильмы
                   </Link>
                 </li>
                 <li
-                  className={`navigation__link-item ${
-                    path === "/saved-movies" ? "link_active" : ""
+                  className={`header__navigation-links ${
+                    path === "/saved-movies" ? "header__navigation-links_active" : ""
                   }`}
                 >
-                  <Link to="/saved-movies" className="navigation__link">
+                  <Link to="/saved-movies" className="header__navigation-link">
                     Сохранённые фильмы
                   </Link>
                 </li>
@@ -59,9 +59,9 @@ function Header() {
               to="/profile"
               className={
                 path === "/"
-                  ? "header__navigation-account background_black"
-                  : `header__navigation-account background_white ${
-                      isOpen ? "menu_opened" : ""
+                  ? "header__navigation-account header__navigation-account_background_black"
+                  : `header__navigation-account header__navigation-account_background_white ${
+                      isOpen ? "header__navigation_opened" : ""
                     }`
               }
             ></Link>
