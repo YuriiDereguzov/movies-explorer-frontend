@@ -6,6 +6,11 @@
   flex-direction: column;
   max-width: 396px;
   justify-content: center;
+  transition: 0.5s;
+}
+
+.auth__logo:hover {
+  width: 39px;
 }
 
 .auth__title {
@@ -32,6 +37,7 @@
   background-color: #3456f3;
   border-radius: 3px;
   border: none;
+  cursor: pointer;
   transition: 0.5s;
 }
 

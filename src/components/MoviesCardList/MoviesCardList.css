@@ -15,6 +15,9 @@
 }
 
 .cards__button {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
   padding: 0;
   /* margin: 0 auto 91px; */
   margin: 44px auto 91px;
@@ -27,6 +30,12 @@
   border-radius: 10px;
   background-color: #f9f9f9;
   cursor: pointer;
+  transition: 0.5s;
+}
+
+.cards__button:hover {
+  font-size: 14px;
+  opacity: 60%;
 }
 
 @media screen and (max-width: 1024px) {

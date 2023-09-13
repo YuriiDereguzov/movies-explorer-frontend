@@ -37,11 +37,12 @@
   background-color: #ffffff;
   border: none;
   color: #3456f3;
+  cursor: pointer;
   transition: 0.5s;
 }
 
 .error__button:hover {
-  font-size: 17px;
+  font-size: 16px;
 }
 
 @media screen and (max-width: 768px) {

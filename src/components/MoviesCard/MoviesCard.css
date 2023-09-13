@@ -41,6 +41,10 @@
   background-color: #f9f9f9;
   background-size: 50%;
   background-position: 6px 7px;
+  transition: 0.5s;
+}
+.card__button:hover {
+  background-size: 55%;
 }
 
 .card__button_active {

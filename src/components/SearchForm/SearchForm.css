@@ -48,6 +48,13 @@
   font-weight: 400;
   font-size: 13px;
   line-height: 18px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.search__filter-name:hover {
+  font-size: 14px;
+  opacity: 60%;
 }
 
 @media screen and (max-width: 768px) {
