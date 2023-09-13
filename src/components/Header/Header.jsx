@@ -83,16 +83,6 @@ function Header() {
                 />
               </div>
             </Link>
-            {/* <Link
-              to="/profile"
-              className={
-                path === "/"
-                  ? "header__navigation-account header__navigation-account_background_black"
-                  : `header__navigation-account header__navigation-account_background_white ${
-                      isOpen ? "header__navigation_opened" : ""
-                    }`
-              }
-            ></Link> */}
             {!isOpen ? (
               <div className="header__burger" onClick={handleOpenMenu}>
                 <div className="header__burger-line"></div>

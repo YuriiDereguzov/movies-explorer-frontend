@@ -45,9 +45,6 @@
 .header__background_gren {
   background-color: #073042;
 }
-/* .header_background {
-  background-color: #073042;
-} */
 
 .header__container {
   margin: auto;
@@ -96,20 +93,6 @@
   font-size: 15px;
   opacity: 60%;
 }
-
-/* .header__navigation-account {
-  background-position-y: 40%;
-  background-position-x: 50%;
-  background-repeat: no-repeat;
-  height: 32px;
-  width: 100px;
-  border-radius: 15px;
-  transition: 0.5s;
-}
-
-.header__navigation-account:hover {
-  background-size: 135px;
-} */
 
 .header__register-link {
   text-decoration: none;
@@ -183,7 +166,6 @@
   padding: 0;
   transition: opacity 0.6s;
   position: fixed;
-  /* right: 6%; */
   right: 3%;
 }
 
@@ -206,35 +188,14 @@
   margin-right: 16px;
 }
 
-/* .header__navigation-account_background_black {
-  background-image: url("../../images/profile.jpg");
-} */
-/* .background_black {
-  background-image: url("../../images/profile.jpg");
-} */
-
-/* .header__navigation-account_background_white {
-  background-image: url("../../images/profileWhite.jpg");
-} */
-/* .background_white {
-  background-image: url("../../images/profileWhite.jpg");
-} */
-
 .header__navigation-links_inactive {
   display: none;
 }
-/* .display_inactive {
-  display: none;
-} */
 
 .header__navigation-links_active {
   font-weight: 500;
   font-size: 15px;
 }
-/* .link_active {
-  font-weight: 500;
-  font-size: 15px;
-} */
 
 @media screen and (max-width: 768px) {
   .header__container {
@@ -279,8 +240,6 @@
   .header__navigation-account {
     display: none;
     position: fixed;
-    /* top: 85%;
-    left: 58%; */
     top: 88%;
     left: 59%;
   }
@@ -291,7 +250,6 @@
   }
 
   .header__navigation-links:nth-of-type(2) {
-    /* margin: 28px 0; */
     margin: 32px 0;
   }
 
@@ -304,19 +262,10 @@
     visibility: visible;
     opacity: 1;
   }
-  /* .menu_opened {
-    display: flex;
-    visibility: visible;
-    opacity: 1;
-  } */
 
   .header__navigation-links_active {
     border-bottom: rgba(0, 0, 0, 1) solid 2px;
   }
-
-  /* .link_active {
-    border-bottom: rgba(0, 0, 0, 1) solid 2px;
-  } */
 }
 
 @media screen and (max-width: 600px) {
