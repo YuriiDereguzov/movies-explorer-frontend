@@ -17,7 +17,7 @@ function Profile() {
   }
 
   return (
-    <section className="user">
+    <main className="user">
       <h1 className="user__title">Привет, Виталий!</h1>
       <form className="user__form" onSubmit={handleEditSubmit} name="form">
         <label className="user__label">
@@ -51,7 +51,7 @@ function Profile() {
       <Link to="/sign-in" className="user__link">
         Выйти из аккаунта
       </Link>
-    </section>
+    </main>
   );
 }
 

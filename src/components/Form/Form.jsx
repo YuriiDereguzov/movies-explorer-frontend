@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 
 function Register(props) {
   return (
-    <section className="auth">
+    <main className="auth">
       <Link to="/">
         <img className="auth__logo" src={logo} alt="Логотип" />
       </Link>
-      <h2 className="auth__title">{props.title}</h2>
+      <h1 className="auth__title">{props.title}</h1>
       <form onSubmit={props.onSubmit} className="form" name="form">
         {props.children}
         <button className="form__submit-button">{props.buttonText}</button>
@@ -18,7 +18,7 @@ function Register(props) {
           </Link>
         </p>
       </form>
-    </section>
+    </main>
   );
 }
 
