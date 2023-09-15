@@ -33,7 +33,7 @@ function App() {
   function handleRegister({ name, email, password }) {
     return Auth.register(name, email, password)
       .then(() => {
-        navigate("/signin", { replace: true });
+        navigate("/sign-in", { replace: true });
         // setIsInfoToolTipOpen(true);
         // setTooltipStatusText("Вы успешно зарегистрировались!");
       })

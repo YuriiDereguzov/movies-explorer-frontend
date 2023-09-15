@@ -33,12 +33,15 @@ function Header({ loggedIn }) {
                   className={
                     isOpen
                       ? `header__navigation-links ${
-                        path === "/" ? "header__navigation-links_active" : ""
-                      }`
+                          path === "/" ? "header__navigation-links_active" : ""
+                        }`
                       : "header__navigation-links_inactive"
                   }
                 >
-                  <Link to="/" className="header__navigation-link header__navigation-link_color_black">
+                  <Link
+                    to="/"
+                    className="header__navigation-link header__navigation-link_color_black"
+                  >
                     Главная
                   </Link>
                 </li>
@@ -47,17 +50,15 @@ function Header({ loggedIn }) {
                     path === "/movies" ? "header__navigation-links_active" : ""
                   }`}
                 >
-                  {/* <Link to="/movies" className="header__navigation-link">
-                    Фильмы
-                  </Link> */}
-                  <Link to="/movies" 
+                  <Link
+                    to="/movies"
                     className={
                       path === "/"
                         ? `header__navigation-link ${
-                          isOpen
-                            ? "header__navigation-link_color_black"
-                            : "header__navigation-link_color_white"
-                        }`
+                            isOpen
+                              ? "header__navigation-link_color_black"
+                              : "header__navigation-link_color_white"
+                          }`
                         : "header__navigation-link header__navigation-link_color_black"
                     }
                   >
@@ -71,24 +72,17 @@ function Header({ loggedIn }) {
                       : ""
                   }`}
                 >
-                  {/* <Link to="/saved-movies" className="header__navigation-link">
-                    Сохранённые фильмы
-                  </Link> */}
-                  <Link to="/saved-movies" 
+                  <Link
+                    to="/saved-movies"
                     className={
                       path === "/"
                         ? `header__navigation-link ${
-                          isOpen
-                            ? "header__navigation-link_color_black"
-                            : "header__navigation-link_color_white"
-                        }`
+                            isOpen
+                              ? "header__navigation-link_color_black"
+                              : "header__navigation-link_color_white"
+                          }`
                         : "header__navigation-link header__navigation-link_color_black"
                     }
-                    // className={
-                    //   path === "/"
-                    //     ? "header__navigation-link header__navigation-link_color_white"
-                    //     : "header__navigation-link header__navigation-link_color_black"
-                    // }
                   >
                     Сохранённые фильмы
                   </Link>
@@ -118,9 +112,27 @@ function Header({ loggedIn }) {
             </Link>
             {!isOpen ? (
               <div className="header__burger" onClick={handleOpenMenu}>
-                <div className="header__burger-line"></div>
-                <div className="header__burger-line"></div>
-                <div className="header__burger-line"></div>
+                <div
+                  className={`header__burger-line  ${
+                    path === "/"
+                      ? "header__burger-line_color_white"
+                      : "header__burger-line_color_black"
+                  }`}
+                ></div>
+                <div
+                  className={`header__burger-line  ${
+                    path === "/"
+                      ? "header__burger-line_color_white"
+                      : "header__burger-line_color_black"
+                  }`}
+                ></div>
+                <div
+                  className={`header__burger-line  ${
+                    path === "/"
+                      ? "header__burger-line_color_white"
+                      : "header__burger-line_color_black"
+                  }`}
+                ></div>
               </div>
             ) : (
               <button

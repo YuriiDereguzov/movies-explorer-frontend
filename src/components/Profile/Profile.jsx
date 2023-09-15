@@ -1,8 +1,14 @@
 import { React, useEffect, useState, useContext } from "react";
+import { useCallback } from "react";
 import { Link } from "react-router-dom";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function Profile({ handleUpdateUser, handleLogout }) {
+  const [status, setStatus] = useState(true);
+  const [buttonProps, setButtonProps] = useState({
+    disabled: true,
+    className: "user__submit user__submit_disabled",
+  });
   // Стейты, в которых содержится значение инпутов
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -17,13 +23,15 @@ function Profile({ handleUpdateUser, handleLogout }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-
     // Передаём значения управляемых компонентов во внешний обработчик
     handleUpdateUser({
       name,
       email,
     });
+
+    setStatus(!status)
   }
+
   // Обработчики изменения инпутов обновляют стейты
   function handleChangeName(e) {
     setName(e.target.value);
@@ -32,6 +40,24 @@ function Profile({ handleUpdateUser, handleLogout }) {
     setEmail(e.target.value);
   }
 
+  
+  function handleSubmitEdit(e) {
+    e.preventDefault();
+    setStatus(!status)
+  }
+
+  const checkEdit = useCallback(() => {
+    if (currentUser.name !== name || currentUser.email !== email) {
+      setButtonProps({ disabled: false, className: "user__submit" });
+      return;
+    }
+    setButtonProps({ disabled: true, className: "user__submit user__submit_disabled"  });
+  }, [name, email, currentUser]);
+
+  useEffect(() => {
+    checkEdit();
+  }, [checkEdit]);
+
   return (
     <main className="user">
       <h1 className="user__title">Привет, {currentUser.name}!</h1>
@@ -39,6 +65,7 @@ function Profile({ handleUpdateUser, handleLogout }) {
         <label className="user__label">
           <p className="user__placeholder">Имя</p>
           <input
+            disabled={status}
             type="name"
             className="user__input"
             name="name"
@@ -51,6 +78,7 @@ function Profile({ handleUpdateUser, handleLogout }) {
         <label className="user__label">
           <p className="user__placeholder">E-mail</p>
           <input
+            disabled={status}
             type="email"
             className="user__input"
             name="email"
@@ -60,9 +88,21 @@ function Profile({ handleUpdateUser, handleLogout }) {
             onChange={handleChangeEmail}
           />
         </label>
-        <button type="submit" onClick={handleSubmit} className="user__edit">
-          Редактировать
-        </button>
+        {status ? (
+          <button type="submit" onClick={handleSubmitEdit} className="user__edit">
+            Редактировать
+          </button>
+          ) : (
+            <button
+              type="submit"
+              className={`${buttonProps.className}`}
+              onClick={handleSubmit}
+              disabled={buttonProps.disabled}
+            >
+              Сохранить
+            </button>
+          )
+        }
       </form>
       <Link to="/" onClick={handleLogout} className="user__link">
         Выйти из аккаунта
