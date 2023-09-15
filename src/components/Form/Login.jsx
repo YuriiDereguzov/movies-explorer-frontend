@@ -1,19 +1,38 @@
 import { useState } from "react";
 import Form from "../Form/Form";
 
-function Register(props) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+function Register({ handleLogin }) {
+  const [userData, setUserData] = useState({
+    password: "",
+    email: "",
+  });
+  const [message, setMessage] = useState("");
 
-  function handleEmailChange(e) {
-    setEmail(e.target.value);
+  function handleChange(e) {
+    const { name, value } = e.target;
+
+    setUserData({
+      ...userData,
+      [name]: value,
+    });
   }
-  function handlePasswordChange(e) {
-    setPassword(e.target.value);
-  }
-  function handleLoginSubmit(e) {
+
+  function handleSubmit(e) {
     e.preventDefault();
-    props.handleLoginSubmit({ password, email });
+
+    if (!userData.email || !userData.password) {
+      return;
+    }
+
+    handleLogin(userData)
+      .then(() => {
+        setUserData({ email: "", password: "" });
+        setMessage("");
+      })
+      .catch((error) => {
+        setMessage(`Что-то пошло не так! ${error} `);
+        console.log(message);
+      });
   }
 
   return (
@@ -24,7 +43,7 @@ function Register(props) {
         formText={"Ещё не зарегистрированы?"}
         route={"/sign-up"}
         linkText={"Регистрация"}
-        onSubmit={handleLoginSubmit}
+        onSubmit={handleSubmit}
       >
         <label className="form__input-placeholder">E-mail</label>
         <input
@@ -32,9 +51,9 @@ function Register(props) {
           className="form__input"
           name="email"
           id="login-email"
-          value={email || ""}
+          // value={email || ""}
           placeholder="pochta@yandex.ru"
-          onChange={handleEmailChange}
+          onChange={handleChange}
           required
         />
         <p className="form__input-error"></p>
@@ -44,12 +63,12 @@ function Register(props) {
           className="form__input"
           name="password"
           id="login-password"
-          value={password || ""}
+          // value={password || ""}
           placeholder="password"
-          onChange={handlePasswordChange}
+          onChange={handleChange}
           required
         />
-        <p className="form__input-error"></p>
+        <p className="form__input-error">{message}</p>
       </Form>
     </>
   );

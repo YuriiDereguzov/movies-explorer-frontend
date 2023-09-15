@@ -3,7 +3,7 @@ import icon from "../../images/icon-account.svg";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-function Header() {
+function Header({ loggedIn }) {
   const location = useLocation();
   const path = location.pathname;
 
@@ -21,9 +21,7 @@ function Header() {
         <Link to="/" className="header__logo">
           <img className="header__logo-img" src={logo} alt="Логотип" />
         </Link>
-        {path === "/movies" ||
-        path === "/saved-movies" ||
-        path === "/profile" ? (
+        {loggedIn ? (
           <>
             <nav
               className={`header__navigation ${
@@ -34,11 +32,13 @@ function Header() {
                 <li
                   className={
                     isOpen
-                      ? "header__navigation-links"
+                      ? `header__navigation-links ${
+                        path === "/" ? "header__navigation-links_active" : ""
+                      }`
                       : "header__navigation-links_inactive"
                   }
                 >
-                  <Link to="/" className="header__navigation-link">
+                  <Link to="/" className="header__navigation-link header__navigation-link_color_black">
                     Главная
                   </Link>
                 </li>
@@ -47,7 +47,20 @@ function Header() {
                     path === "/movies" ? "header__navigation-links_active" : ""
                   }`}
                 >
-                  <Link to="/movies" className="header__navigation-link">
+                  {/* <Link to="/movies" className="header__navigation-link">
+                    Фильмы
+                  </Link> */}
+                  <Link to="/movies" 
+                    className={
+                      path === "/"
+                        ? `header__navigation-link ${
+                          isOpen
+                            ? "header__navigation-link_color_black"
+                            : "header__navigation-link_color_white"
+                        }`
+                        : "header__navigation-link header__navigation-link_color_black"
+                    }
+                  >
                     Фильмы
                   </Link>
                 </li>
@@ -58,7 +71,25 @@ function Header() {
                       : ""
                   }`}
                 >
-                  <Link to="/saved-movies" className="header__navigation-link">
+                  {/* <Link to="/saved-movies" className="header__navigation-link">
+                    Сохранённые фильмы
+                  </Link> */}
+                  <Link to="/saved-movies" 
+                    className={
+                      path === "/"
+                        ? `header__navigation-link ${
+                          isOpen
+                            ? "header__navigation-link_color_black"
+                            : "header__navigation-link_color_white"
+                        }`
+                        : "header__navigation-link header__navigation-link_color_black"
+                    }
+                    // className={
+                    //   path === "/"
+                    //     ? "header__navigation-link header__navigation-link_color_white"
+                    //     : "header__navigation-link header__navigation-link_color_black"
+                    // }
+                  >
                     Сохранённые фильмы
                   </Link>
                 </li>
@@ -68,7 +99,9 @@ function Header() {
               to="/profile"
               className={
                 path === "/"
-                  ? "header__navigation-account header__navigation-account_background_green"
+                  ? `header__navigation-account header__navigation-account_background_green ${
+                      isOpen ? "header__navigation_opened" : ""
+                    }`
                   : `header__navigation-account ${
                       isOpen ? "header__navigation_opened" : ""
                     }`

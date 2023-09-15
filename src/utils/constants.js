@@ -1,7 +1,5 @@
 import image from "../images/1.png";
 
-export const moviesApi = "https://api.nomoreparties.co";
-
 export const movies = [
   {
     name: "33 слова о дизайне",

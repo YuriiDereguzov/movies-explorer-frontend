@@ -1,23 +1,33 @@
 import { useState } from "react";
 import Form from "../Form/Form";
 
-function Register(props) {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+function Register({ handleRegister }) {
+  const [userData, setUserData] = useState({
+    name: "",
+    password: "",
+    email: "",
+  });
+  const [message, setMessage] = useState("");
 
-  function handleNameChange(e) {
-    setName(e.target.value);
+  function handleChange(e) {
+    const { name, value } = e.target;
+
+    setUserData({
+      ...userData,
+      [name]: value,
+    });
   }
-  function handleEmailChange(e) {
-    setEmail(e.target.value);
-  }
-  function handlePasswordChange(e) {
-    setPassword(e.target.value);
-  }
-  function handleRegisterSubmit(e) {
+
+  function handleSubmit(e) {
     e.preventDefault();
-    props.HandleRegisterSubmit({ name, password, email });
+
+    handleRegister(userData)
+      .then(() => {
+        setMessage("");
+      })
+      .catch((error) => {
+        setMessage(`Что-то пошло не так! ${error} `);
+      });
   }
 
   return (
@@ -28,44 +38,44 @@ function Register(props) {
         formText={"Уже зарегистрированы?"}
         route={"/sign-in"}
         linkText={"Войти"}
-        onSubmit={handleRegisterSubmit}
+        onSubmit={handleSubmit}
       >
         <label className="form__input-placeholder">Имя</label>
         <input
           type="text"
-          className="form__input"
           name="name"
-          id="register-name"
-          value={name || ""}
+          id="name"
+          className="form__input"
+          // value={name || ""}
           placeholder="Виталий"
-          onChange={handleNameChange}
+          onChange={handleChange}
           required
         />
         <p className="form__input-error"></p>
         <label className="form__input-placeholder">E-mail</label>
         <input
           type="email"
-          className="form__input"
           name="email"
-          id="register-email"
-          value={email || ""}
+          id="email"
+          className="form__input"
+          // value={email || ""}
           placeholder="pochta@yandex.ru"
-          onChange={handleEmailChange}
+          onChange={handleChange}
           required
         />
         <p className="form__input-error"></p>
         <label className="form__input-placeholder">Пароль</label>
         <input
           type="password"
-          className="form__input"
           name="password"
-          id="register-password"
-          value={password || ""}
+          id="password"
+          className="form__input"
+          // value={password || ""}
           placeholder="password"
-          onChange={handlePasswordChange}
+          onChange={handleChange}
           required
         />
-        <p className="form__input-error">Что-то пошло не так...</p>
+        <p className="form__input-error">{message}</p>
       </Form>
     </>
   );
