@@ -11,6 +11,7 @@ import SavedMovies from "../SavedMovies/SavedMovies";
 import Profile from "../Profile/Profile";
 import * as Auth from "../../utils/MainApi";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import ProtectedRoute from "../ProtectedRoute";
 // import * as Api from "../../utils/MoviesApi";
 
 function App() {
@@ -90,33 +91,61 @@ function App() {
           <Route
             path="/movies"
             element={
-              <>
-                <Header loggedIn={loggedIn} />
-                <Movies />
-                <Footer />
-              </>
+              <ProtectedRoute 
+                loggedIn={loggedIn}
+                component={Movies}
+              />
+              // <>
+              //   <Header loggedIn={loggedIn} />
+              //   {/* <Movies /> */}
+              //   <ProtectedRoute 
+              //     loggedIn={loggedIn}
+              //     component={Movies}
+              //   />
+              //   <Footer />
+              // </>
             }
           />
           <Route
             path="/saved-movies"
             element={
-              <>
-                <Header loggedIn={loggedIn} />
-                <SavedMovies />
-                <Footer />
-              </>
+              <ProtectedRoute 
+                loggedIn={loggedIn}
+                component={SavedMovies}
+              />
+              // <>
+              //   <Header loggedIn={loggedIn} />
+              //   {/* <SavedMovies /> */}
+              //   <ProtectedRoute 
+              //     loggedIn={loggedIn}
+              //     component={SavedMovies}
+              //   />
+              //   <Footer />
+              // </>
             }
           />
           <Route
             path="/profile"
             element={
-              <>
-                <Header loggedIn={loggedIn} />
-                <Profile
-                  handleUpdateUser={handleUpdateUser}
-                  handleLogout={handleSignOut}
-                />
-              </>
+              <ProtectedRoute 
+                loggedIn={loggedIn}
+                component={Profile}
+                handleUpdateUser={handleUpdateUser}
+                handleLogout={handleSignOut}
+              />
+              // <>
+              //   <Header loggedIn={loggedIn} />
+              //   {/* <Profile
+              //     handleUpdateUser={handleUpdateUser}
+              //     handleLogout={handleSignOut}
+              //   /> */}
+              //   <ProtectedRoute 
+              //     loggedIn={loggedIn}
+              //     component={Profile}
+              //     handleUpdateUser={handleUpdateUser}
+              //     handleLogout={handleSignOut}
+              //   />
+              // </>
             }
           />
           <Route
