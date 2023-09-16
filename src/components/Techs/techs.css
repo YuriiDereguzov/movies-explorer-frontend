@@ -1,0 +1,120 @@
+.techs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #f5f5f5;
+}
+
+.techs__info {
+  display: flex;
+  flex-direction: column;
+  max-width: 1140px;
+  width: 90%;
+  align-items: center;
+}
+
+.techs__title {
+  margin-top: 100px;
+  margin-bottom: 0;
+  padding-bottom: 23px;
+  width: 100%;
+  font-weight: 400;
+  font-size: 22px;
+  letter-spacing: -0.04em;
+  border-bottom: rgba(0, 0, 0, 1) solid 1px;
+}
+
+.techs__subtitle {
+  margin: 90px auto 26px;
+  font-weight: 400;
+  font-size: 50px;
+  letter-spacing: -0.04em;
+  text-align: center;
+}
+
+.techs__discription {
+  margin: 0;
+  max-width: 460px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.04em;
+  text-align: center;
+}
+
+.techs__list {
+  margin: 100px auto;
+  display: grid;
+  gap: 10px;
+  list-style: none;
+  grid-template-columns: repeat(auto-fit, 90px);
+  justify-content: center;
+  padding: 0;
+  width: 100%;
+}
+
+.techs__list-item {
+  min-height: 60px;
+  min-width: 90px;
+  font-weight: 400;
+  font-size: 14px;
+  background: #e8e8e8;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 17px;
+}
+
+@media screen and (max-width: 768px) {
+  .techs__title {
+    margin-top: 90px;
+  }
+
+  .techs__subtitle {
+    margin: 83px auto 22px;
+  }
+
+  .techs__discription {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .techs__list {
+    margin: 83px auto 90px;
+    grid-template-columns: repeat(auto-fit, 84px);
+  }
+
+  .techs__list-item {
+    min-height: 57px;
+    min-width: 84px;
+    font-size: 12px;
+  }
+
+  .techs__info {
+    width: 87%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .techs__title {
+    margin-top: 128px;
+    padding-bottom: 28px;
+    font-size: 18px;
+  }
+
+  .techs__subtitle {
+    margin: 60px auto 24px;
+    font-size: 30px;
+  }
+
+  .techs__discription {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .techs__list {
+    margin: 50px auto 70px;
+    grid-template-columns: repeat(auto-fit, 87px);
+  }
+}
