@@ -23,7 +23,6 @@ function App() {
     const jwt = localStorage.getItem("jwt");
     if (jwt) {
       Auth.authentication(jwt).then((userData) => {
-        // console.log(userData);
         setLoggedIn(true);
         setCurrentUser(userData);
       });
