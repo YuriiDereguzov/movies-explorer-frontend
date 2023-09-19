@@ -1,15 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
+import { useLocation } from "react-router-dom";
 
-function SearchForm({ props }) {
+function SearchForm({ onSearchSubmit, movieErrText, checkboxChange }) {
   const [searchText, setSearchText] = useState("");
+
+  const location = useLocation();
+  const path = location.pathname;
+  const isNotSavedMovies = path !== "/saved-movies";
+
+  
+  useEffect(() => {
+    if (isNotSavedMovies) {
+      if (localStorage.getItem("SearchText")) {
+        setSearchText(localStorage.getItem("SearchText"));
+      }
+    }
+  }, [isNotSavedMovies]);
 
   function handleSearchChange(e) {
     setSearchText(e.target.value);
   }
   function sumbitSearch(e) {
     e.preventDefault();
-    props.onSearchSubmit(searchText);
+    onSearchSubmit(searchText);
   }
 
   return (
@@ -23,7 +37,6 @@ function SearchForm({ props }) {
           placeholder="Фильм"
           value={searchText || ""}
           onChange={handleSearchChange}
-          required
         />
         <button type="submit" className="search__form-submit">
           Найти
@@ -31,11 +44,11 @@ function SearchForm({ props }) {
       </form>
       <div className="search__form-filter">
         <label className="search__filter-name">
-          {/* <FilterCheckbox checkboxChange={props.checkboxChange} /> */}
-          <FilterCheckbox />
+          <FilterCheckbox checkboxChange={checkboxChange} />
           Короткометражки
         </label>
       </div>
+      <p className="search__form-error">{movieErrText}</p>
     </section>
   );
 }

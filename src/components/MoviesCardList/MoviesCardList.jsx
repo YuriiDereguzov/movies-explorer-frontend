@@ -1,7 +1,8 @@
 import { useState } from "react";
 import MoviesCard from "../MoviesCard/MoviesCard";
+import Preloader from "../Preloader/Preloader";
 
-function MoviesCardList(props) {
+function MoviesCardList({ movies, isMoviesLoading }) {
   const [countMovies, setCountMovies] = useState(16);
 
   function handleClickMoreMovies() {
@@ -10,18 +11,16 @@ function MoviesCardList(props) {
 
   return (
     <section className="cards">
-      <div className="cards__list">
-        {props.movies.slice(0, countMovies).map((data, i) => (
-          <MoviesCard
-            key={i}
-            name={data.name}
-            duration={data.duration}
-            img={data.img}
-            saved={data.saved}
-          />
-        ))}
-      </div>
-      {countMovies < props.movies.length && (
+      {isMoviesLoading === true ? (
+        <Preloader />
+      ) : (
+        <div className="cards__list">
+          {movies.slice(0, countMovies).map((data) => (
+            <MoviesCard movie={data} key={data.id} />
+          ))}
+        </div>
+      )}
+      {countMovies < movies.length && (
         <button className="cards__button" onClick={handleClickMoreMovies}>
           Ещё
         </button>

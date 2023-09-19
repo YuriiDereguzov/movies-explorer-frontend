@@ -3,15 +3,24 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
-import { movies } from "../../utils/constants";
-
-function Movies({ loggedIn }) {
+function Movies({
+  loggedIn,
+  handleSearchSumbit,
+  movies,
+  movieErrText,
+  isMoviesLoading,
+  checkboxChange,
+}) {
   return (
     <>
       <Header loggedIn={loggedIn} />
       <main className="movies">
-        <SearchForm />
-        <MoviesCardList movies={movies} />
+        <SearchForm
+          onSearchSubmit={handleSearchSumbit}
+          checkboxChange={checkboxChange}
+          movieErrText={movieErrText}
+        />
+        <MoviesCardList movies={movies} isMoviesLoading={isMoviesLoading} />
       </main>
       <Footer />
     </>

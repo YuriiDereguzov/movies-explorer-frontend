@@ -4,6 +4,13 @@
   margin: auto;
 }
 
+.search__form-error {
+  margin: 20px 0 0;
+  color: #ff3055;
+  min-height: 20px;
+  text-align: center;
+}
+
 .search__form {
   display: flex;
   justify-content: space-between;

@@ -1,12 +1,26 @@
-// import { useState } from 'react';
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
-function FilterCheckbox(props) {
-  //   const [checked, setChecked] = useState(true);
+function FilterCheckbox({ checkboxChange }) {
+  const [checked, setChecked] = useState(true);
+  
+  const location = useLocation();
+  const path = location.pathname;
+  const isNotSavedMovies = path !== "/saved-movies";
 
-  //   const handleChange = () => {
-  //     props.checkboxChange(!checked);
-  //     setChecked((checked) => !checked);
-  //   };
+
+  useEffect(() => {
+    if (isNotSavedMovies) {
+      if (localStorage.getItem("Shorts")) {
+        setChecked(localStorage.getItem("Shorts") === "true");
+      }
+    }
+  }, [isNotSavedMovies]);
+
+  const handleChange = () => {
+    checkboxChange(!checked);
+    setChecked((checked) => !checked);
+  };
 
   return (
     <div className="checkbox">
@@ -15,8 +29,8 @@ function FilterCheckbox(props) {
         className="checkbox__input"
         name="checkbox"
         id="checkbox"
-        // checked={checked}
-        // onChange={handleChange}
+        checked={checked}
+        onChange={handleChange}
       ></input>
       <div className="checkbox__button">
         <div className="checkbox__button-toggler"></div>
