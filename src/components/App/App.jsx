@@ -14,17 +14,25 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import ProtectedRoute from "../ProtectedRoute";
 
 import { getMovies } from "../../utils/MoviesApi.js";
+import Preloader from "../Preloader/Preloader";
 
 function App() {
   const navigate = useNavigate();
-  const [loggedIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({ name: "", email: "" });
+  const [isCheckedToken, setIsCheckedToken] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [isMoviesLoading, setIsMoviesLoading] = useState(false);
 
   const [filtredMovies, setFiltredMovies] = useState([]);
   const [movieErrText, setMovieErrText] = useState("");
   const [searchText, setSearchText] = useState("");
-  const [isMoviesLoading, setIsMoviesLoading] = useState(false);
+  
   const [shortsCheckbox, setShortsCheckbox] = useState(true);
+
+  const [savedFiltredMovies, setSavedFiltredMovies] = useState([]);
+  const [savedMovieErrText, setSavedMovieErrText] = useState("");
+  const [savedSearchText, setSavedSearchText] = useState("");
+  const [savedMovies, setSavedMovies] = useState([]);
 
   useEffect(() => {
     // проверяем наличие токена
@@ -40,8 +48,15 @@ function App() {
           console.log(err);
         })
         .finally(() => {
+          setIsCheckedToken(false);
           setIsMoviesLoading(false);
         });
+      Auth.getMySavedMovies()
+        .then((res) => {
+          setSavedMovies(res);
+          setSavedFiltredMovies(res);
+        })
+        .catch((data) => console.log(data));
       if (localStorage.getItem("Shorts")) {
         setShortsCheckbox(localStorage.getItem("Shorts") === "true");
       }
@@ -55,7 +70,82 @@ function App() {
 
 
 
+  function onMovieButtonClick(movie, isSaved) {
+    // Если фильм сохранен
+    if (isSaved) {
+      //Ищем фильм для удаления
+      let movieToDelete = savedMovies.find(
+        (savedMovie) => savedMovie.movieId === movie.id
+      );
+      if (movieToDelete === undefined) {
+        movieToDelete = savedMovies.find(
+          (savedMovie) => savedMovie.movieId === movie.movieId
+        );
+      }
+      //Удаляем
+      Auth.deleteMovie(movieToDelete._id)
+        .then((res) => {
+          Auth.getMySavedMovies().then((res) => {
+            setSavedMovies(res);
+          });
+        })
+        .catch((data) => console.log(data));
+    } else {
+      //Если фильм не сохранен - сохраняем
+      Auth.saveMovie(movie)
+        .then((res) => {
+          Auth.getMySavedMovies().then((res) => {
+            setSavedMovies(res);
+          });
+        })
+        .catch((data) => console.log(data));
+    }
+  }
 
+
+  function showAllSavedMovies() {
+    setSavedMovieErrText("");
+    setSavedFiltredMovies(savedMovies);
+  }
+
+  function handleSavedMoviesSearchSubmit(text) {
+    setSavedMovieErrText("");
+    setSavedSearchText(text);
+  }
+
+  const filterSaved = useCallback(() => {
+    if (savedSearchText === "") {
+      let filteredCheckbox = filterByCheckbox(savedMovies, shortsCheckbox);
+
+      if (filteredCheckbox.length === 0) setSavedMovieErrText("Ничего не найдено");
+      if (filteredCheckbox.length > 0) setSavedMovieErrText("");
+      return filteredCheckbox;
+    }
+    let filtredMovies = savedMovies.filter((movie) =>
+      movie.nameRU.toLocaleLowerCase().includes(savedSearchText.toLocaleLowerCase())
+    );
+    filtredMovies = filterByCheckbox(filtredMovies, shortsCheckbox);
+    
+    if (filtredMovies.length === 0) setSavedMovieErrText("Ничего не найдено");
+    if (filtredMovies.length > 0) setSavedMovieErrText("");
+    return filtredMovies;
+  }, [savedSearchText, shortsCheckbox, savedMovies]);
+
+
+  useEffect(() => {
+    if (window.location.pathname === "/saved-movies") {
+      setSavedFiltredMovies(filterSaved());
+    }
+  }, [savedSearchText, shortsCheckbox, savedMovies, filterSaved]);
+
+
+
+  function saveSearchText(searchText) {
+    localStorage.setItem("SearchText", searchText);
+  }
+  function saveShortsCheckbox(isChecked) {
+    localStorage.setItem("Shorts", isChecked);
+  }
 
   function filterByCheckbox(filtredMovies, checkbox) {
     if (checkbox) {
@@ -71,12 +161,6 @@ function App() {
     saveShortsCheckbox(isChecked);
   }
 
-  function saveSearchText(searchText) {
-    localStorage.setItem("SearchText", searchText);
-  }
-  function saveShortsCheckbox(isChecked) {
-    localStorage.setItem("Shorts", isChecked);
-  }
 
   const filterMovies = useCallback(() => {
     let AllMovies = JSON.parse(localStorage.getItem("AllMovies"));
@@ -94,11 +178,13 @@ function App() {
     return filtredMovies;
   }, [searchText, shortsCheckbox]);
 
+
   useEffect(() => {
     if (localStorage.getItem("AllMovies")) {
       setFiltredMovies(filterMovies());
     }
   }, [searchText, filterMovies, shortsCheckbox]);
+
 
   function handleSearchSumbit(text) {
     if (text === "") {
@@ -131,8 +217,6 @@ function App() {
 
 
 
-
-
   function handleRegister({ name, email, password }) {
     return Auth.register(name, email, password)
       .then(() => {
@@ -152,7 +236,7 @@ function App() {
         if (data.token) {
           localStorage.setItem("jwt", data.token);
           setLoggedIn(true);
-          navigate("/profile", { replace: true });
+          navigate("/movies", { replace: true });
         }
       })
       .catch(() => {
@@ -194,6 +278,7 @@ function App() {
           <Route
             path="/movies"
             element={
+              isCheckedToken === true ? <Preloader /> :
               <ProtectedRoute
                 loggedIn={loggedIn}
                 component={Movies}
@@ -202,55 +287,39 @@ function App() {
                 movies={filtredMovies}
                 movieErrText={movieErrText}
                 isMoviesLoading={isMoviesLoading}
+                onMovieButtonCkick={onMovieButtonClick}
+                savedMovies={savedMovies}
               />
-              // <>
-              //   <Header loggedIn={loggedIn} />
-              //   {/* <Movies /> */}
-              //   <ProtectedRoute
-              //     loggedIn={loggedIn}
-              //     component={Movies}
-              //   />
-              //   <Footer />
-              // </>
             }
           />
           <Route
             path="/saved-movies"
             element={
-              <ProtectedRoute loggedIn={loggedIn} component={SavedMovies} />
-              // <>
-              //   <Header loggedIn={loggedIn} />
-              //   {/* <SavedMovies /> */}
-              //   <ProtectedRoute
-              //     loggedIn={loggedIn}
-              //     component={SavedMovies}
-              //   />
-              //   <Footer />
-              // </>
+              isCheckedToken === true ? <Preloader /> :
+              <ProtectedRoute
+              loggedIn={loggedIn}
+              component={SavedMovies}
+              handleSearchSumbit={handleSavedMoviesSearchSubmit}
+              checkboxChange={checkboxChange}
+              movies={savedFiltredMovies}
+              movieErrText={savedMovieErrText}
+              isMoviesLoading={isMoviesLoading}
+              onMovieButtonCkick={onMovieButtonClick}
+              savedMovies={savedMovies}
+              showAllSavedMovies={showAllSavedMovies}
+              />
             }
           />
           <Route
             path="/profile"
             element={
+              isCheckedToken === true ? <Preloader /> :
               <ProtectedRoute
                 loggedIn={loggedIn}
                 component={Profile}
                 handleUpdateUser={handleUpdateUser}
                 handleLogout={handleSignOut}
               />
-              // <>
-              //   <Header loggedIn={loggedIn} />
-              //   {/* <Profile
-              //     handleUpdateUser={handleUpdateUser}
-              //     handleLogout={handleSignOut}
-              //   /> */}
-              //   <ProtectedRoute
-              //     loggedIn={loggedIn}
-              //     component={Profile}
-              //     handleUpdateUser={handleUpdateUser}
-              //     handleLogout={handleSignOut}
-              //   />
-              // </>
             }
           />
           <Route

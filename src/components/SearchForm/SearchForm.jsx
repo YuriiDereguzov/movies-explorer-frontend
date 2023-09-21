@@ -34,7 +34,7 @@ function SearchForm({ onSearchSubmit, movieErrText, checkboxChange }) {
           className="search__form-input"
           name="search-input"
           id="search-input"
-          placeholder="Фильм"
+          placeholder="Поиск"
           value={searchText || ""}
           onChange={handleSearchChange}
         />

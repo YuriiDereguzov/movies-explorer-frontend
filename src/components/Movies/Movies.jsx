@@ -10,6 +10,8 @@ function Movies({
   movieErrText,
   isMoviesLoading,
   checkboxChange,
+  onMovieButtonCkick,
+  savedMovies,
 }) {
   return (
     <>
@@ -20,7 +22,12 @@ function Movies({
           checkboxChange={checkboxChange}
           movieErrText={movieErrText}
         />
-        <MoviesCardList movies={movies} isMoviesLoading={isMoviesLoading} />
+        <MoviesCardList
+          movies={movies}
+          isMoviesLoading={isMoviesLoading}
+          onMovieButtonCkick={onMovieButtonCkick}
+          savedMovies={savedMovies}
+        />
       </main>
       <Footer />
     </>

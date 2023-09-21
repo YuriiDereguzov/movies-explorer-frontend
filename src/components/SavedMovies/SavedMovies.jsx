@@ -3,16 +3,31 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
-import { movies } from "../../utils/constants";
-
-function SavedMovies({ loggedIn }) {
+function SavedMovies({
+  loggedIn,
+  handleSearchSumbit,
+  movies,
+  movieErrText,
+  isMoviesLoading,
+  checkboxChange,
+  onMovieButtonCkick,
+  savedMovies,
+}) {
   return (
     <>
       <Header loggedIn={loggedIn} />
       <main className="movies">
-        <SearchForm />
+        <SearchForm
+          onSearchSubmit={handleSearchSumbit}
+          checkboxChange={checkboxChange}
+          movieErrText={movieErrText}
+        />
         <MoviesCardList
-          movies={movies.filter((movie) => movie.saved === true)}
+          onMovieButtonCkick={onMovieButtonCkick}
+          saved={true}
+          movies={movies}
+          savedMovies={savedMovies}
+          isMoviesLoading={isMoviesLoading}
         />
       </main>
       <Footer />
