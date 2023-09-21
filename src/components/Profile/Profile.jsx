@@ -6,10 +6,7 @@ import Header from "../Header/Header";
 
 function Profile({ loggedIn, handleUpdateUser, handleLogout }) {
   const [status, setStatus] = useState(true);
-  const [buttonProps, setButtonProps] = useState({
-    disabled: true,
-    className: "user__submit user__submit_disabled",
-  });
+  const [buttonProps, setButtonProps] = useState({ disabled: true });
   // Стейты, в которых содержится значение инпутов
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -48,13 +45,11 @@ function Profile({ loggedIn, handleUpdateUser, handleLogout }) {
 
   const checkEdit = useCallback(() => {
     if (currentUser.name !== name || currentUser.email !== email) {
-      setButtonProps({ disabled: false, className: "user__submit" });
+      // setButtonProps({ disabled: false, className: "user__submit" });
+      setButtonProps({ disabled: false });
       return;
     }
-    setButtonProps({
-      disabled: true,
-      className: "user__submit user__submit_disabled",
-    });
+    setButtonProps({ disabled: true });
   }, [name, email, currentUser]);
 
   useEffect(() => {
@@ -104,7 +99,7 @@ function Profile({ loggedIn, handleUpdateUser, handleLogout }) {
           ) : (
             <button
               type="submit"
-              className={`${buttonProps.className}`}
+              className={"user__submit"}
               onClick={handleSubmit}
               disabled={buttonProps.disabled}
             >

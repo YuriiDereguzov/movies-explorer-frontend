@@ -13,13 +13,13 @@ function MoviesCardList({
   const [moviesAmount, setMoviesAmount] = useState(5);
 
   useEffect(() => {
-    // window.addEventListener("resize", resize);
+    window.addEventListener("resize", resize);
     resize();
     // setTimeout(() => {
     //   window.addEventListener("resize", resize);
     //   resize();
     // }, 100);
-    // return () => window.removeEventListener("resize", resize);
+    return () => window.removeEventListener("resize", resize);
   }, []);
 
   function resize() {

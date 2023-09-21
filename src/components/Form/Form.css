@@ -1,5 +1,4 @@
 .auth {
-  /* margin: 70px auto 0; */
   margin: auto;
   width: 100%;
   display: flex;
@@ -43,6 +42,12 @@
 
 .form__submit-button:hover {
   font-size: 17px;
+}
+
+.form__submit-button:disabled {
+  background-color: #F8F8F8;
+  color: #C2C2C2;
+  font-size: 14px;
 }
 
 .form__links {
@@ -98,7 +103,6 @@
 @media screen and (max-width: 500px) {
   .auth {
     margin: 56px auto auto;
-    /* margin: 40px auto 0; */
     align-items: center;
   }
 

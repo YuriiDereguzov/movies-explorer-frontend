@@ -1,20 +1,12 @@
 import { useState, useEffect } from "react";
-// import { useLocation } from "react-router-dom";
 
 function FilterCheckbox({ checkboxChange }) {
   const [checked, setChecked] = useState(true);
 
-  // const location = useLocation();
-  // const path = location.pathname;
-  // const isNotSavedMovies = path !== "/saved-movies";
-
   useEffect(() => {
-    // if (isNotSavedMovies) {
     if (localStorage.getItem("Shorts")) {
       setChecked(localStorage.getItem("Shorts") === "true");
     }
-    // }
-    // }, [isNotSavedMovies]);
   }, []);
 
   const handleChange = () => {
