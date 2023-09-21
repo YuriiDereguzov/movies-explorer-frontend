@@ -34,6 +34,8 @@ function App() {
   const [savedSearchText, setSavedSearchText] = useState("");
   const [savedMovies, setSavedMovies] = useState([]);
 
+  const [error, setError] = useState("");
+
   useEffect(() => {
     // проверяем наличие токена
     const jwt = localStorage.getItem("jwt");
@@ -219,14 +221,20 @@ function App() {
 
   function handleRegister({ name, email, password }) {
     return Auth.register(name, email, password)
-      .then(() => {
-        navigate("/sign-in", { replace: true });
-        // setIsInfoToolTipOpen(true);
-        // setTooltipStatusText("Вы успешно зарегистрировались!");
+      .then((res) => {
+        if (res) {
+          handleLogin({ email, password });
+          navigate('/movies', { replace: true })
+        }
+        setError("Вы успешно зарегистрировались!");
       })
-      .catch(() => {
-        console.log("Не зареган");
-        // setIsInfoToolTipOpen(true);
+      .catch((err) => {
+        console.log(err);
+        if (err.includes(409)) {
+          setError("Пользователь с таким Email уже существует");
+        } else {
+          setError("Что-то пошло не так! Попробуйте ещё раз.");
+        }
       });
   }
 
@@ -239,9 +247,9 @@ function App() {
           navigate("/movies", { replace: true });
         }
       })
-      .catch(() => {
-        console.log("Не вошел");
-        // setIsInfoToolTipOpen(true);
+      .catch((err) => {
+        console.log(err);
+        setError("Что-то пошло не так! Попробуйте ещё раз.");
       });
   }
 
@@ -249,9 +257,15 @@ function App() {
     return Auth.editProfile(userData.name, userData.email)
       .then((userData) => {
         setCurrentUser(userData);
+        setError("Успешно обновленно!");
       })
       .catch((err) => {
         console.log(`Ошибка при обновлении информации пользователя: ${err}`);
+        if (err.includes(409)) {
+          setError("Пользователь с таким Email уже существует");
+        } else {
+          setError("Что то пошло не так...");
+        }
       });
   }
 
@@ -319,6 +333,7 @@ function App() {
                 component={Profile}
                 handleUpdateUser={handleUpdateUser}
                 handleLogout={handleSignOut}
+                error={error}
               />
             }
           />
@@ -326,7 +341,7 @@ function App() {
             path="/sign-up"
             element={
               <>
-                <Register handleRegister={handleRegister} />
+                <Register handleRegister={handleRegister} error={error} />
               </>
             }
           />
@@ -334,7 +349,7 @@ function App() {
             path="/sign-in"
             element={
               <>
-                <Login handleLogin={handleLogin} />
+                <Login handleLogin={handleLogin} error={error} />
               </>
             }
           />

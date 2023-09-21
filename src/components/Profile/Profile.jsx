@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import Header from "../Header/Header";
 
-function Profile({ loggedIn, handleUpdateUser, handleLogout }) {
+function Profile({ loggedIn, handleUpdateUser, handleLogout, error }) {
   const [status, setStatus] = useState(true);
   const [buttonProps, setButtonProps] = useState({ disabled: true });
   // Стейты, в которых содержится значение инпутов
@@ -45,7 +45,6 @@ function Profile({ loggedIn, handleUpdateUser, handleLogout }) {
 
   const checkEdit = useCallback(() => {
     if (currentUser.name !== name || currentUser.email !== email) {
-      // setButtonProps({ disabled: false, className: "user__submit" });
       setButtonProps({ disabled: false });
       return;
     }
@@ -70,8 +69,10 @@ function Profile({ loggedIn, handleUpdateUser, handleLogout }) {
               className="user__input"
               name="name"
               id="name"
+              minLength="2"
+              maxLength="30"
               value={name || ""}
-              placeholder="Виталий"
+              placeholder="Имя"
               onChange={handleChangeName}
             />
           </label>
@@ -84,10 +85,11 @@ function Profile({ loggedIn, handleUpdateUser, handleLogout }) {
               name="email"
               id="email"
               value={email || ""}
-              placeholder="pochta@yandex.ru"
+              placeholder="E-mail"
               onChange={handleChangeEmail}
             />
           </label>
+          <h2 className="form__error">{error}</h2>
           {status ? (
             <button
               type="submit"

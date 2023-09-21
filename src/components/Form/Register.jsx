@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import Form from "../Form/Form";
 import useFormWithValidation from "../../utils/useFormWithValidation";
 
-function Register({ handleRegister }) {
+function Register({ handleRegister, error }) {
   const { values, handleChange, errors, isValid, resetForm } =
     useFormWithValidation();
 
@@ -70,6 +70,7 @@ function Register({ handleRegister }) {
           onChange={handleChange}
         />
         <p className="form__input-error">{errors.password || ""}</p>
+        <h2 className="form__error">{error}</h2>
         <button className="form__submit-button" disabled={!isValid}>
           Зарегистрироваться
         </button>
