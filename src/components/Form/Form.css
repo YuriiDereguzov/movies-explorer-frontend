@@ -110,7 +110,8 @@
 
 @media screen and (max-width: 500px) {
   .auth {
-    margin: 56px auto auto;
+    /* margin: 56px auto auto; */
+    margin: auto auto 29px;
     align-items: center;
   }
 
@@ -124,7 +125,9 @@
   }
 
   .form {
-    min-height: 497px;
+    /* min-height: 497px; */
+    min-height: 64vh;
+    max-width: 260px;
   }
 
   .form__links {

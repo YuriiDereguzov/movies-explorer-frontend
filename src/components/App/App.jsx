@@ -67,6 +67,7 @@ function App() {
       }
     } else {
       setLoggedIn(false);
+      setIsCheckedToken(false);
     }
   }, [navigate]);
 
@@ -226,7 +227,7 @@ function App() {
           handleLogin({ email, password });
           navigate('/movies', { replace: true })
         }
-        setError("Вы успешно зарегистрировались!");
+        // setError("Вы успешно зарегистрировались!");
       })
       .catch((err) => {
         console.log(err);
