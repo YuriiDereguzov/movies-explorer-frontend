@@ -35,8 +35,14 @@ function App() {
   const [savedMovies, setSavedMovies] = useState([]);
 
   const [error, setError] = useState("");
+  
+  const [moreMovies, setMoremuvies] = useState(2);
+  const [moviesAmount, setMoviesAmount] = useState(5);
+  const [moreMoviesButton, setMoreMoviesButton] = useState(false);
 
   useEffect(() => {
+    window.addEventListener("resize", resize);
+    resize();
     // проверяем наличие токена
     const jwt = localStorage.getItem("jwt");
     if (jwt) {
@@ -69,9 +75,30 @@ function App() {
       setLoggedIn(false);
       setIsCheckedToken(false);
     }
+    return () => window.removeEventListener("resize", resize);
   }, [navigate]);
 
 
+  function resize() {
+    if (window.innerWidth > 1025) {
+      setMoremuvies(4);
+      setMoviesAmount(16);
+    } else if (window.innerWidth > 768) {
+      setMoremuvies(3);
+      setMoviesAmount(9);
+    } else if (window.innerWidth > 500) {
+      setMoremuvies(2);
+      setMoviesAmount(8);
+    } else {
+      setMoviesAmount(5);
+    }
+  }
+
+  function handleClickMoreMovies() {
+    setMoviesAmount(moviesAmount + moreMovies);
+  }
+
+  
 
   function onMovieButtonClick(movie, isSaved) {
     // Если фильм сохранен
@@ -178,8 +205,16 @@ function App() {
 
     if (filtredMovies.length === 0) setMovieErrText("Ничего не найдено");
     if (filtredMovies.length > 0) setMovieErrText("");
+
+    if (filtredMovies.length > moviesAmount) {
+      setMoreMoviesButton(true);
+    } else {
+      setMoreMoviesButton(false);
+    }
+
+    filtredMovies = filtredMovies.slice(0, moviesAmount);
     return filtredMovies;
-  }, [searchText, shortsCheckbox]);
+  }, [searchText, shortsCheckbox, moviesAmount]);
 
 
   useEffect(() => {
@@ -190,8 +225,10 @@ function App() {
 
 
   function handleSearchSumbit(text) {
+    resize();
     if (text === "") {
       setMovieErrText("Нужно ввести ключевое слово");
+      setMoreMoviesButton(false);
       return;
     }
     setMovieErrText("");
@@ -304,6 +341,9 @@ function App() {
                 isMoviesLoading={isMoviesLoading}
                 onMovieButtonCkick={onMovieButtonClick}
                 savedMovies={savedMovies}
+
+                moreMoviesButton={moreMoviesButton}
+                handleClickMoreMovies={handleClickMoreMovies}
               />
             }
           />

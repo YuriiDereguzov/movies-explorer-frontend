@@ -12,6 +12,8 @@ function Movies({
   checkboxChange,
   onMovieButtonCkick,
   savedMovies,
+  moreMoviesButton,
+  handleClickMoreMovies
 }) {
   return (
     <>
@@ -27,6 +29,8 @@ function Movies({
           isMoviesLoading={isMoviesLoading}
           onMovieButtonCkick={onMovieButtonCkick}
           savedMovies={savedMovies}
+          moreMoviesButton={moreMoviesButton}
+          handleClickMoreMovies={handleClickMoreMovies}
         />
       </main>
       <Footer />
