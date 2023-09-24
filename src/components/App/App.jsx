@@ -27,7 +27,7 @@ function App() {
   const [movieErrText, setMovieErrText] = useState("");
   const [searchText, setSearchText] = useState("");
   
-  const [shortsCheckbox, setShortsCheckbox] = useState(true);
+  const [shortsCheckbox, setShortsCheckbox] = useState(false);
 
   const [savedFiltredMovies, setSavedFiltredMovies] = useState([]);
   const [savedMovieErrText, setSavedMovieErrText] = useState("");

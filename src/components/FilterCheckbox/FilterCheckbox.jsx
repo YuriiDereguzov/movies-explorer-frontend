@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 function FilterCheckbox({ checkboxChange }) {
-  const [checked, setChecked] = useState(true);
+  const [checked, setChecked] = useState(false);
 
   useEffect(() => {
     if (localStorage.getItem("Shorts")) {
