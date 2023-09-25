@@ -13,7 +13,7 @@ function Movies({
   onMovieButtonCkick,
   savedMovies,
   moreMoviesButton,
-  handleClickMoreMovies
+  handleClickMoreMovies,
 }) {
   return (
     <>

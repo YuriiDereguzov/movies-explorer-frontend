@@ -26,7 +26,7 @@ function App() {
   const [filtredMovies, setFiltredMovies] = useState([]);
   const [movieErrText, setMovieErrText] = useState("");
   const [searchText, setSearchText] = useState("");
-  
+
   const [shortsCheckbox, setShortsCheckbox] = useState(false);
 
   const [savedFiltredMovies, setSavedFiltredMovies] = useState([]);
@@ -35,7 +35,7 @@ function App() {
   const [savedMovies, setSavedMovies] = useState([]);
 
   const [error, setError] = useState("");
-  
+
   const [moreMovies, setMoremuvies] = useState(2);
   const [moviesAmount, setMoviesAmount] = useState(5);
   const [moreMoviesButton, setMoreMoviesButton] = useState(false);
@@ -78,7 +78,6 @@ function App() {
     return () => window.removeEventListener("resize", resize);
   }, [navigate]);
 
-
   function resize() {
     if (window.innerWidth > 1025) {
       setMoremuvies(4);
@@ -97,8 +96,6 @@ function App() {
   function handleClickMoreMovies() {
     setMoviesAmount(moviesAmount + moreMovies);
   }
-
-  
 
   function onMovieButtonClick(movie, isSaved) {
     // Если фильм сохранен
@@ -132,7 +129,6 @@ function App() {
     }
   }
 
-
   function showAllSavedMovies() {
     setSavedMovieErrText("");
     setSavedFiltredMovies(savedMovies);
@@ -147,28 +143,28 @@ function App() {
     if (savedSearchText === "") {
       let filteredCheckbox = filterByCheckbox(savedMovies, shortsCheckbox);
 
-      if (filteredCheckbox.length === 0) setSavedMovieErrText("Ничего не найдено");
+      if (filteredCheckbox.length === 0)
+        setSavedMovieErrText("Ничего не найдено");
       if (filteredCheckbox.length > 0) setSavedMovieErrText("");
       return filteredCheckbox;
     }
     let filtredMovies = savedMovies.filter((movie) =>
-      movie.nameRU.toLocaleLowerCase().includes(savedSearchText.toLocaleLowerCase())
+      movie.nameRU
+        .toLocaleLowerCase()
+        .includes(savedSearchText.toLocaleLowerCase())
     );
     filtredMovies = filterByCheckbox(filtredMovies, shortsCheckbox);
-    
+
     if (filtredMovies.length === 0) setSavedMovieErrText("Ничего не найдено");
     if (filtredMovies.length > 0) setSavedMovieErrText("");
     return filtredMovies;
   }, [savedSearchText, shortsCheckbox, savedMovies]);
-
 
   useEffect(() => {
     if (window.location.pathname === "/saved-movies") {
       setSavedFiltredMovies(filterSaved());
     }
   }, [savedSearchText, shortsCheckbox, savedMovies, filterSaved]);
-
-
 
   function saveSearchText(searchText) {
     localStorage.setItem("SearchText", searchText);
@@ -190,7 +186,6 @@ function App() {
     setShortsCheckbox(isChecked);
     saveShortsCheckbox(isChecked);
   }
-
 
   const filterMovies = useCallback(() => {
     let AllMovies = JSON.parse(localStorage.getItem("AllMovies"));
@@ -216,13 +211,11 @@ function App() {
     return filtredMovies;
   }, [searchText, shortsCheckbox, moviesAmount]);
 
-
   useEffect(() => {
     if (localStorage.getItem("AllMovies")) {
       setFiltredMovies(filterMovies());
     }
   }, [searchText, filterMovies, shortsCheckbox]);
-
 
   function handleSearchSumbit(text) {
     resize();
@@ -255,14 +248,12 @@ function App() {
     }
   }
 
-
-
   function handleRegister({ name, email, password }) {
     return Auth.register(name, email, password)
       .then((res) => {
         if (res) {
           handleLogin({ email, password });
-          navigate('/movies', { replace: true })
+          navigate("/movies", { replace: true });
         }
         // setError("Вы успешно зарегистрировались!");
       })
@@ -330,68 +321,80 @@ function App() {
           <Route
             path="/movies"
             element={
-              isCheckedToken === true ? <Preloader /> :
-              <ProtectedRoute
-                loggedIn={loggedIn}
-                component={Movies}
-                handleSearchSumbit={handleSearchSumbit}
-                checkboxChange={checkboxChange}
-                movies={filtredMovies}
-                movieErrText={movieErrText}
-                isMoviesLoading={isMoviesLoading}
-                onMovieButtonCkick={onMovieButtonClick}
-                savedMovies={savedMovies}
-
-                moreMoviesButton={moreMoviesButton}
-                handleClickMoreMovies={handleClickMoreMovies}
-              />
+              isCheckedToken ? (
+                <Preloader />
+              ) : (
+                <ProtectedRoute
+                  loggedIn={loggedIn}
+                  component={Movies}
+                  handleSearchSumbit={handleSearchSumbit}
+                  checkboxChange={checkboxChange}
+                  movies={filtredMovies}
+                  movieErrText={movieErrText}
+                  isMoviesLoading={isMoviesLoading}
+                  onMovieButtonCkick={onMovieButtonClick}
+                  savedMovies={savedMovies}
+                  moreMoviesButton={moreMoviesButton}
+                  handleClickMoreMovies={handleClickMoreMovies}
+                />
+              )
             }
           />
           <Route
             path="/saved-movies"
             element={
-              isCheckedToken === true ? <Preloader /> :
-              <ProtectedRoute
-              loggedIn={loggedIn}
-              component={SavedMovies}
-              handleSearchSumbit={handleSavedMoviesSearchSubmit}
-              checkboxChange={checkboxChange}
-              movies={savedFiltredMovies}
-              movieErrText={savedMovieErrText}
-              isMoviesLoading={isMoviesLoading}
-              onMovieButtonCkick={onMovieButtonClick}
-              savedMovies={savedMovies}
-              showAllSavedMovies={showAllSavedMovies}
-              />
+              isCheckedToken ? (
+                <Preloader />
+              ) : (
+                <ProtectedRoute
+                  loggedIn={loggedIn}
+                  component={SavedMovies}
+                  handleSearchSumbit={handleSavedMoviesSearchSubmit}
+                  checkboxChange={checkboxChange}
+                  movies={savedFiltredMovies}
+                  movieErrText={savedMovieErrText}
+                  isMoviesLoading={isMoviesLoading}
+                  onMovieButtonCkick={onMovieButtonClick}
+                  savedMovies={savedMovies}
+                  showAllSavedMovies={showAllSavedMovies}
+                />
+              )
             }
           />
           <Route
             path="/profile"
             element={
-              isCheckedToken === true ? <Preloader /> :
-              <ProtectedRoute
-                loggedIn={loggedIn}
-                component={Profile}
-                handleUpdateUser={handleUpdateUser}
-                handleLogout={handleSignOut}
-                error={error}
-              />
+              isCheckedToken ? (
+                <Preloader />
+              ) : (
+                <ProtectedRoute
+                  loggedIn={loggedIn}
+                  component={Profile}
+                  handleUpdateUser={handleUpdateUser}
+                  handleLogout={handleSignOut}
+                  error={error}
+                />
+              )
             }
           />
           <Route
             path="/sign-up"
             element={
-              <>
+              !isCheckedToken ? (
                 <Register handleRegister={handleRegister} error={error} />
-              </>
+              ) : (
+                <Navigate to="/" replace />
+              )
             }
           />
           <Route
             path="/sign-in"
             element={
-              <>
+              !isCheckedToken ? (
                 <Login handleLogin={handleLogin} error={error} />
-              </>
+              ) : (
+                <Navigate to="/" replace />
+              )
             }
           />
           <Route path="/404" element={<NotFound />} />
