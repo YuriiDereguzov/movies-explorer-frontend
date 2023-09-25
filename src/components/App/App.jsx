@@ -111,19 +111,16 @@ function App() {
       }
       //Удаляем
       Auth.deleteMovie(movieToDelete._id)
-        .then((res) => {
-          Auth.getMySavedMovies().then((res) => {
-            setSavedMovies(res);
-          });
+        .then(() => {
+          const newArray = savedMovies.filter((item) => item._id !== movieToDelete._id);
+          setSavedMovies(newArray);
         })
         .catch((data) => console.log(data));
     } else {
       //Если фильм не сохранен - сохраняем
       Auth.saveMovie(movie)
         .then((res) => {
-          Auth.getMySavedMovies().then((res) => {
-            setSavedMovies(res);
-          });
+          setSavedMovies([res, ...savedMovies]);
         })
         .catch((data) => console.log(data));
     }
