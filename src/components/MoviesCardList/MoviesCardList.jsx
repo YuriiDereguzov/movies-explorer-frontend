@@ -20,10 +20,10 @@ function MoviesCardList({
         <Preloader />
       ) : (
         <div className="cards__list">
-          {movies.map((data, i) => (
+          {movies.map((data) => (
             <MoviesCard
               movie={data}
-              key={i}
+              key={data.id || data._id}
               saved={saved || isMovieSaved(data)}
               onMovieButtonCkick={onMovieButtonCkick}
             />

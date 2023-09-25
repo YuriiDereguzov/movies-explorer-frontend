@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import Form from "../Form/Form";
 import useFormWithValidation from "../../utils/useFormWithValidation";
 
-function Register({ handleRegister, error }) {
+function Register({ handleRegister, error, isDisabled }) {
   const { values, handleChange, errors, isValid, resetForm } =
     useFormWithValidation();
 
@@ -18,7 +18,7 @@ function Register({ handleRegister, error }) {
       email: values.email,
       password: values.password,
     });
-    resetForm();
+    // resetForm();
   }
 
   return (
@@ -42,6 +42,7 @@ function Register({ handleRegister, error }) {
           maxLength="30"
           value={values.name || ""}
           onChange={handleChange}
+          disabled={isDisabled ? true : false }
         />
         <p className="form__input-error">{errors.name || ""}</p>
         <label className="form__input-placeholder">E-mail</label>
@@ -55,6 +56,7 @@ function Register({ handleRegister, error }) {
           onChange={handleChange}
           value={values.email || ""}
           pattern="[a-z0-9]+@[a-z]+\.[a-z]{2,3}"
+          disabled={isDisabled ? true : false }
         />
         <p className="form__input-error">{errors.email || ""}</p>
         <label className="form__input-placeholder">Пароль</label>
@@ -68,10 +70,12 @@ function Register({ handleRegister, error }) {
           required
           value={values.password || ""}
           onChange={handleChange}
+          disabled={isDisabled ? true : false }
         />
         <p className="form__input-error">{errors.password || ""}</p>
         <h2 className="form__error">{error}</h2>
-        <button className="form__submit-button" disabled={!isValid}>
+        {/* <button className="form__submit-button" disabled={!isValid}> */}
+        <button className="form__submit-button" disabled={isDisabled ? true : !isValid }>
           Зарегистрироваться
         </button>
       </Form>

@@ -12,9 +12,27 @@ import Profile from "../Profile/Profile";
 import * as Auth from "../../utils/MainApi";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import ProtectedRoute from "../ProtectedRoute";
-
 import { getMovies } from "../../utils/MoviesApi.js";
 import Preloader from "../Preloader/Preloader";
+import {
+  //Коды ошибок
+  CONFLICT_ERROR_CODE,
+  //Длительность короткометражек
+  DURATION_SHORT_MOVIES,
+  //Порог смены экрана
+  SCREEN_WIDTH_1025,
+  SCREEN_WIDTH_768,
+  SCREEN_WIDTH_500,
+  //Стандартное колличество фильмов на странице
+  INITIAL_COUNT_MOVIES_FOR_DEFAULT,
+  INITIAL_COUNT_MOVIES_FOR_MOBILE,
+  INITIAL_COUNT_MOVIES_FOR_MIDDLE,
+  INITIAL_COUNT_MOVIES_FOR_DESKTOP,
+  //Колличество фильмов отображаемые при нажатии кнопки "Еще"
+  TWO_COUNT_MOVIES_FOR_MORE_BUTTON,
+  THREE_COUNT_MOVIES_FOR_MORE_BUTTON,
+  FOUR_COUNT_MOVIES_FOR_MORE_BUTTON,
+} from "../../utils/constants";
 
 function App() {
   const navigate = useNavigate();
@@ -34,6 +52,7 @@ function App() {
   const [savedSearchText, setSavedSearchText] = useState("");
   const [savedMovies, setSavedMovies] = useState([]);
 
+  const [isDisabled, setIsDisabled] = useState(false);
   const [error, setError] = useState("");
 
   const [moreMovies, setMoremuvies] = useState(2);
@@ -43,6 +62,7 @@ function App() {
   useEffect(() => {
     window.addEventListener("resize", resize);
     resize();
+    setError("");
     // проверяем наличие токена
     const jwt = localStorage.getItem("jwt");
     if (jwt) {
@@ -79,17 +99,17 @@ function App() {
   }, [navigate]);
 
   function resize() {
-    if (window.innerWidth > 1025) {
-      setMoremuvies(4);
-      setMoviesAmount(16);
-    } else if (window.innerWidth > 768) {
-      setMoremuvies(3);
-      setMoviesAmount(9);
-    } else if (window.innerWidth > 500) {
-      setMoremuvies(2);
-      setMoviesAmount(8);
+    if (window.innerWidth > SCREEN_WIDTH_1025) {
+      setMoremuvies(FOUR_COUNT_MOVIES_FOR_MORE_BUTTON);
+      setMoviesAmount(INITIAL_COUNT_MOVIES_FOR_DESKTOP);
+    } else if (window.innerWidth > SCREEN_WIDTH_768) {
+      setMoremuvies(THREE_COUNT_MOVIES_FOR_MORE_BUTTON);
+      setMoviesAmount(INITIAL_COUNT_MOVIES_FOR_MIDDLE);
+    } else if (window.innerWidth > SCREEN_WIDTH_500) {
+      setMoremuvies(TWO_COUNT_MOVIES_FOR_MORE_BUTTON);
+      setMoviesAmount(INITIAL_COUNT_MOVIES_FOR_MOBILE);
     } else {
-      setMoviesAmount(5);
+      setMoviesAmount(INITIAL_COUNT_MOVIES_FOR_DEFAULT);
     }
   }
 
@@ -112,7 +132,9 @@ function App() {
       //Удаляем
       Auth.deleteMovie(movieToDelete._id)
         .then(() => {
-          const newArray = savedMovies.filter((item) => item._id !== movieToDelete._id);
+          const newArray = savedMovies.filter(
+            (item) => item._id !== movieToDelete._id
+          );
           setSavedMovies(newArray);
         })
         .catch((data) => console.log(data));
@@ -173,7 +195,7 @@ function App() {
   function filterByCheckbox(filtredMovies, checkbox) {
     if (checkbox) {
       return (filtredMovies = filtredMovies.filter(
-        (movie) => movie.duration < 40
+        (movie) => movie.duration < DURATION_SHORT_MOVIES
       ));
     }
     return filtredMovies;
@@ -246,25 +268,29 @@ function App() {
   }
 
   function handleRegister({ name, email, password }) {
+    setIsDisabled(true);
     return Auth.register(name, email, password)
       .then((res) => {
         if (res) {
           handleLogin({ email, password });
           navigate("/movies", { replace: true });
         }
-        // setError("Вы успешно зарегистрировались!");
       })
       .catch((err) => {
         console.log(err);
-        if (err.includes(409)) {
+        if (err.includes(CONFLICT_ERROR_CODE)) {
           setError("Пользователь с таким Email уже существует");
         } else {
           setError("Что-то пошло не так! Попробуйте ещё раз.");
         }
+      })
+      .finally(() => {
+        setIsDisabled(false);
       });
   }
 
   function handleLogin({ email, password }) {
+    setIsDisabled(true);
     return Auth.authorize(email, password)
       .then((data) => {
         if (data.token) {
@@ -276,6 +302,9 @@ function App() {
       .catch((err) => {
         console.log(err);
         setError("Что-то пошло не так! Попробуйте ещё раз.");
+      })
+      .finally(() => {
+        setIsDisabled(false);
       });
   }
 
@@ -287,7 +316,7 @@ function App() {
       })
       .catch((err) => {
         console.log(`Ошибка при обновлении информации пользователя: ${err}`);
-        if (err.includes(409)) {
+        if (err.includes(CONFLICT_ERROR_CODE)) {
           setError("Пользователь с таким Email уже существует");
         } else {
           setError("Что то пошло не так...");
@@ -378,7 +407,11 @@ function App() {
             path="/sign-up"
             element={
               !isCheckedToken ? (
-                <Register handleRegister={handleRegister} error={error} />
+                <Register
+                  handleRegister={handleRegister}
+                  error={error}
+                  isDisabled={isDisabled}
+                />
               ) : (
                 <Navigate to="/" replace />
               )
@@ -388,7 +421,11 @@ function App() {
             path="/sign-in"
             element={
               !isCheckedToken ? (
-                <Login handleLogin={handleLogin} error={error} />
+                <Login
+                  handleLogin={handleLogin}
+                  error={error}
+                  isDisabled={isDisabled}
+                />
               ) : (
                 <Navigate to="/" replace />
               )

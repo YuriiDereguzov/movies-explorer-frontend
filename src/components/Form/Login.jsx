@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import Form from "../Form/Form";
 import useFormWithValidation from "../../utils/useFormWithValidation";
 
-function Login({ handleLogin, error }) {
+function Login({ handleLogin, error, isDisabled }) {
   const { values, handleChange, errors, isValid, resetForm } =
     useFormWithValidation();
 
@@ -14,7 +14,7 @@ function Login({ handleLogin, error }) {
     e.preventDefault();
 
     handleLogin({ email: values.email, password: values.password });
-    resetForm();
+    // resetForm();
   }
 
   return (
@@ -36,6 +36,7 @@ function Login({ handleLogin, error }) {
           required
           onChange={handleChange}
           value={values.email || ""}
+          disabled={isDisabled ? true : false }
         />
         <p className="form__input-error">{errors.email || ""}</p>
         <label className="form__input-placeholder">Пароль</label>
@@ -49,10 +50,12 @@ function Login({ handleLogin, error }) {
           required
           value={values.password || ""}
           onChange={handleChange}
+          disabled={isDisabled ? true : false }
         />
         <p className="form__input-error">{errors.password || ""}</p>
         <h2 className="form__error">{error}</h2>
-        <button className="form__submit-button" disabled={!isValid}>
+        {/* <button className="form__submit-button" disabled={!isValid}> */}
+        <button className="form__submit-button" disabled={isDisabled ? true : !isValid }>
           Войти
         </button>
       </Form>

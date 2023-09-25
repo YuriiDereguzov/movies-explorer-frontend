@@ -1,106 +1,16 @@
-// import image from "../images/1.png";
+export const CONFLICT_ERROR_CODE = 409;
 
-// export const movies = [
-//   {
-//     name: "33 слова о дизайне",
-//     duration: "1ч42м",
-//     img: image,
-//     saved: true,
-//   },
-//   {
-//     name: "33 слова о дизайне",
-//     duration: "1ч42м",
-//     img: image,
-//     saved: false,
-//   },
-//   {
-//     name: "33 слова о дизайне",
-//     duration: "1ч42м",
-//     img: image,
-//     saved: false,
-//   },
-//   {
-//     name: "33 слова о дизайне",
-//     duration: "1ч42м",
-//     img: image,
-//     saved: false,
-//   },
-//   {
-//     name: "33 слова о дизайне",
-//     duration: "1ч42м",
-//     img: image,
-//     saved: false,
-//   },
-//   {
-//     name: "Кино",
-//     duration: "1ч42м",
-//     img: image,
-//     saved: true,
-//   },
-//   {
-//     name: "33 слова о дизайне",
-//     duration: "1ч42м",
-//     img: image,
-//     saved: false,
-//   },
-//   {
-//     name: "33 слова о дизайне",
-//     duration: "1ч42м",
-//     img: image,
-//     saved: false,
-//   },
-//   {
-//     name: "33 слова о дизайне",
-//     duration: "1ч42м",
-//     img: image,
-//     saved: false,
-//   },
-//   {
-//     name: "33 слова о дизайне",
-//     duration: "1ч42м",
-//     img: image,
-//     saved: false,
-//   },
-//   {
-//     name: "Дизайн",
-//     duration: "1ч42м",
-//     img: image,
-//     saved: true,
-//   },
-//   {
-//     name: "33 слова о дизайне",
-//     duration: "1ч42м",
-//     img: image,
-//     saved: false,
-//   },
-//   {
-//     name: "33 слова о дизайне",
-//     duration: "1ч42м",
-//     img: image,
-//     saved: false,
-//   },
-//   {
-//     name: "33 слова о дизайне",
-//     duration: "1ч42м",
-//     img: image,
-//     saved: false,
-//   },
-//   {
-//     name: "33 слова о дизайне",
-//     duration: "1ч42м",
-//     img: image,
-//     saved: false,
-//   },
-//   {
-//     name: "33 слова о дизайне",
-//     duration: "1ч42м",
-//     img: image,
-//     saved: false,
-//   },
-//   {
-//     name: "33 слова о дизайне",
-//     duration: "1ч42м",
-//     img: image,
-//     saved: false,
-//   },
-// ];
+export const DURATION_SHORT_MOVIES = 40;
+
+export const SCREEN_WIDTH_1025 = 1025;
+export const SCREEN_WIDTH_768 = 768;
+export const SCREEN_WIDTH_500 = 500;
+
+export const INITIAL_COUNT_MOVIES_FOR_DEFAULT = 5;
+export const INITIAL_COUNT_MOVIES_FOR_MOBILE = 8;
+export const INITIAL_COUNT_MOVIES_FOR_MIDDLE = 9;
+export const INITIAL_COUNT_MOVIES_FOR_DESKTOP = 16;
+
+export const TWO_COUNT_MOVIES_FOR_MORE_BUTTON = 2;
+export const THREE_COUNT_MOVIES_FOR_MORE_BUTTON = 3;
+export const FOUR_COUNT_MOVIES_FOR_MORE_BUTTON = 4;
