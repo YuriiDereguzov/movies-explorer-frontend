@@ -1,3 +1,4 @@
+Ссылка на Pull request - https://github.com/YuriiDereguzov/movies-explorer-frontend/pull/2
 # movies-explorer-frontend
 
 ## Дипломный проект Яндекс.Практикум "Веб-разработчик". Фронтенд часть.
@@ -14,7 +15,7 @@ Frontend
 
 [GitHub] — https://github.com/YuriiDereguzov/movies-explorer-frontend
 
-[Deploy] — https://...
+[Deploy] — https://kinopoisk.nomoredomainsrocks.ru
 
 Backend
 

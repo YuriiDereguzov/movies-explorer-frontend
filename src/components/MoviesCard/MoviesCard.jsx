@@ -1,35 +1,45 @@
 import { useLocation } from "react-router-dom";
 
-function MoviesCard(props) {
+function MoviesCard({ movie, saved, onMovieButtonCkick }) {
   const location = useLocation();
   const path = location.pathname;
   const isMovies = path === "/movies";
+  const isSavedMovies = path === "/saved-movies";
+
+  const hours = Math.floor(movie.duration / 60);
+  const minutes = movie.duration % 60;
 
   function handleClickLike() {
-    console.log("click");
+    onMovieButtonCkick(movie, saved);
   }
 
   return (
     <div className="card">
-      <img
-        src={props.img}
-        alt={"Обложка фильма " + props.name}
-        className="card__image"
-      ></img>
+      <a href={movie.trailerLink} target="blank" rel="noreferrer">
+        <img
+          src={
+            isSavedMovies
+              ? movie.image
+              : "https://api.nomoreparties.co/" + movie.image.url
+          }
+          alt={"Обложка фильма " + movie.nameRU}
+          className="card__image"
+        />
+      </a>
       <div className="card__container">
-        <h3 className="card__title">{props.name}</h3>
+        <h3 className="card__title">{movie.nameRU}</h3>
         <button
           className={
             isMovies
-              ? props.saved === false
-                ? "card__button"
-                : "card__button card__button_active"
+              ? saved
+                ? "card__button card__button_active"
+                : "card__button"
               : "button"
           }
           onClick={handleClickLike}
         ></button>
       </div>
-      <p className="card__duration">{props.duration}</p>
+      <p className="card__duration">{`${hours}ч ${minutes}м`}</p>
     </div>
   );
 }

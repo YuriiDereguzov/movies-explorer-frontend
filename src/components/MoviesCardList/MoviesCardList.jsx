@@ -1,30 +1,41 @@
-import { useState } from "react";
 import MoviesCard from "../MoviesCard/MoviesCard";
+import Preloader from "../Preloader/Preloader";
 
-function MoviesCardList(props) {
-  const [countMovies, setCountMovies] = useState(16);
-
-  function handleClickMoreMovies() {
-    setCountMovies(countMovies + 16);
+function MoviesCardList({
+  movies,
+  isMoviesLoading,
+  saved,
+  savedMovies,
+  onMovieButtonCkick,
+  moreMoviesButton,
+  handleClickMoreMovies,
+}) {
+  function isMovieSaved(movie) {
+    return savedMovies.some((savedMovie) => savedMovie.movieId === movie.id);
   }
 
   return (
     <section className="cards">
-      <div className="cards__list">
-        {props.movies.slice(0, countMovies).map((data, i) => (
-          <MoviesCard
-            key={i}
-            name={data.name}
-            duration={data.duration}
-            img={data.img}
-            saved={data.saved}
-          />
-        ))}
-      </div>
-      {countMovies < props.movies.length && (
+      {isMoviesLoading === true ? (
+        <Preloader />
+      ) : (
+        <div className="cards__list">
+          {movies.map((data) => (
+            <MoviesCard
+              movie={data}
+              key={data.id || data._id}
+              saved={saved || isMovieSaved(data)}
+              onMovieButtonCkick={onMovieButtonCkick}
+            />
+          ))}
+        </div>
+      )}
+      {moreMoviesButton ? (
         <button className="cards__button" onClick={handleClickMoreMovies}>
           Ещё
         </button>
+      ) : (
+        <></>
       )}
     </section>
   );

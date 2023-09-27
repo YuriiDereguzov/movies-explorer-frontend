@@ -6,8 +6,8 @@ function AboutMe() {
       <h2 className="profile__title">Студент</h2>
       <div className="profile__contaner">
         <div className="profile__info">
-          <h3 className="profile__name">Виталий</h3>
-          <p className="profile__job">Фронтенд-разработчик, 30 лет</p>
+          <h3 className="profile__name">Юрий</h3>
+          <p className="profile__job">Фронтенд-разработчик, 26 лет</p>
           <p className="profile__description">
             Я родился и живу в Саратове, закончил факультет экономики СГУ. У
             меня есть жена и дочь. Я люблю слушать музыку, а ещё увлекаюсь

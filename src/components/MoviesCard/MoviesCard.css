@@ -1,4 +1,7 @@
 .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   overflow: hidden;
 }
 
@@ -11,15 +14,19 @@
 }
 
 .card__image {
-  object-fit: cover;
   width: 100%;
-  min-height: 150px;
+  height: 151px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: .5s;
 }
 
 .card__title {
   margin: auto 0;
   font-weight: 500;
   font-size: 13px;
+  max-width: 90%;
+  max-height: 24px;
 }
 
 .card__duration {
@@ -41,7 +48,6 @@
   background-color: #f9f9f9;
   background-size: 50%;
   background-position: 6px 7px;
-  transition: 0.5s;
 }
 .card__button:hover {
   background-size: 55%;
@@ -56,9 +62,6 @@
 }
 
 .button {
-  /* visibility: hidden; */
-  /* opacity: 0; */
-  /* transition: visibility 0.5s, opacity 0.5s, linear 0.5s; */
   padding: 0;
   width: 24px;
   height: 24px;
@@ -74,6 +77,19 @@
   background-color: #f9f9f9;
   background-size: 50%;
   background-position: 6px 7px;
-  /* visibility: visible; */
-  /* opacity: 1; */
+}
+
+@media screen and (max-width: 768px) {
+  .button {
+    border-radius: 50%;
+    background: url(../../images/icon_like-delete.svg);
+    background-repeat: no-repeat;
+    background-color: #f9f9f9;
+    background-size: 50%;
+    background-position: 6px 7px;
+  }
+  .button:hover {
+    background-size: 55%;
+  }
+  
 }

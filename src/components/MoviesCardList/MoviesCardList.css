@@ -1,6 +1,6 @@
 .cards {
-  /* margin: 70px auto 0; */
-  margin: 107px auto 0;
+  /* margin: 107px auto 0; */
+  margin: 67px auto 0;
   width: 90%;
   max-width: 1140px;
   min-height: 493px;
@@ -20,7 +20,7 @@
   line-height: 15px;
   padding: 0;
   /* margin: 0 auto 91px; */
-  margin: 44px auto 91px;
+  margin: 54px auto 91px;
   display: flex;
   align-items: center;
   justify-content: center;

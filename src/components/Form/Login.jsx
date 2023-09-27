@@ -1,45 +1,26 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import Form from "../Form/Form";
+import useFormWithValidation from "../../utils/useFormWithValidation";
 
-function Register({ handleLogin }) {
-  const [userData, setUserData] = useState({
-    password: "",
-    email: "",
-  });
-  const [message, setMessage] = useState("");
+function Login({ handleLogin, error, isDisabled }) {
+  const { values, handleChange, errors, isValid, resetForm } =
+    useFormWithValidation();
 
-  function handleChange(e) {
-    const { name, value } = e.target;
-
-    setUserData({
-      ...userData,
-      [name]: value,
-    });
-  }
+  useEffect(() => {
+    resetForm();
+  }, [resetForm]);
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    if (!userData.email || !userData.password) {
-      return;
-    }
-
-    handleLogin(userData)
-      .then(() => {
-        setUserData({ email: "", password: "" });
-        setMessage("");
-      })
-      .catch((error) => {
-        setMessage(`Что-то пошло не так! ${error} `);
-        console.log(message);
-      });
+    handleLogin({ email: values.email, password: values.password });
+    // resetForm();
   }
 
   return (
     <>
       <Form
         title={"Рады видеть!"}
-        buttonText={"Войти"}
         formText={"Ещё не зарегистрированы?"}
         route={"/sign-up"}
         linkText={"Регистрация"}
@@ -50,28 +31,36 @@ function Register({ handleLogin }) {
           type="email"
           className="form__input"
           name="email"
-          id="login-email"
-          // value={email || ""}
-          placeholder="pochta@yandex.ru"
-          onChange={handleChange}
+          id="email"
+          placeholder="E-mail"
           required
+          onChange={handleChange}
+          value={values.email || ""}
+          disabled={isDisabled ? true : false }
         />
-        <p className="form__input-error"></p>
+        <p className="form__input-error">{errors.email || ""}</p>
         <label className="form__input-placeholder">Пароль</label>
         <input
           type="password"
           className="form__input"
           name="password"
-          id="login-password"
-          // value={password || ""}
-          placeholder="password"
-          onChange={handleChange}
+          id="password"
+          placeholder="Пароль"
+          minLength="8"
           required
+          value={values.password || ""}
+          onChange={handleChange}
+          disabled={isDisabled ? true : false }
         />
-        <p className="form__input-error">{message}</p>
+        <p className="form__input-error">{errors.password || ""}</p>
+        <h2 className="form__error">{error}</h2>
+        {/* <button className="form__submit-button" disabled={!isValid}> */}
+        <button className="form__submit-button" disabled={isDisabled ? true : !isValid }>
+          Войти
+        </button>
       </Form>
     </>
   );
 }
 
-export default Register;
+export default Login;

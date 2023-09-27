@@ -18,7 +18,7 @@
   font-size: 17px;
 }
 
-.user__submit_disabled {
+.user__submit:disabled {
   color: #c2c2c2;
   background-color: #f8f8f8;
   font-size: 14px;
