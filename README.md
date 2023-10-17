@@ -31,7 +31,6 @@ Backend
   JavaScript <img style="width: 3%" src="https://github.com/github/explore/blob/main/topics/javascript/javascript.png" alt="JavaScript">
   </li>
   <li>React <img style="width: 3%" src="https://github.com/github/explore/blob/main/topics/react/react.png" alt="React"></li>
-  <li>Webpack <img style="width: 3%" src="https://github.com/github/explore/blob/main/topics/webpack/webpack.png" alt="Webpack"></li>
   <li>Express <img style="width: 3%" src="https://github.com/github/explore/blob/main/topics/express/express.png" alt="Express"></li>
   <li>NodeJS <img style="width: 3%" src="https://github.com/github/explore/blob/main/topics/nodejs/nodejs.png" alt="NodeJS"></li>
   <li>MongoDB <img style="width: 3%" src="https://github.com/github/explore/blob/main/topics/mongodb/mongodb.png" alt="MongoDB"></li>
