@@ -6,7 +6,7 @@
 
 Кинопоиск - это сервис, в котором можно найти фильмы по запросу и сохранить в личном кабинете.
 
-## Ссылки на проект:
+### Ссылки на проект:
 
 Frontend
 
@@ -22,18 +22,22 @@ Backend
 
 [Deploy] — https://api.kinopoisk.nomoredomains.rocks
 
-# Технологии, инструменты и стек:
+## Технологии, инструменты и стек:
 
 <ul>
   <li>HTML</li>
   <li>CSS</li>
-  <li>JavaScript</li>
-  <li>React</li>
-  <li>Express</li>
-  <li>MongoDB</li>
-  <li>NodeJS</li>
+  <li>
+  JavaScript <img style="width: 3%" src="https://github.com/github/explore/blob/main/topics/javascript/javascript.png" alt="JavaScript">
+  </li>
+  <li>React <img style="width: 3%" src="https://github.com/github/explore/blob/main/topics/react/react.png" alt="React"></li>
+  <li>Webpack <img style="width: 3%" src="https://github.com/github/explore/blob/main/topics/webpack/webpack.png" alt="Webpack"></li>
+  <li>Express <img style="width: 3%" src="https://github.com/github/explore/blob/main/topics/express/express.png" alt="Express"></li>
+  <li>NodeJS <img style="width: 3%" src="https://github.com/github/explore/blob/main/topics/nodejs/nodejs.png" alt="NodeJS"></li>
+  <li>MongoDB <img style="width: 3%" src="https://github.com/github/explore/blob/main/topics/mongodb/mongodb.png" alt="MongoDB"></li>
   <li>API</li>
-  <li>Nginx</li>
+  <li>Nginx <img style="width: 3%" src="https://github.com/github/explore/blob/main/topics/nginx/nginx.png" alt="Nginx"></li>
+  <li>ESlint <img style="width: 3%" src="https://github.com/github/explore/blob/main/topics/eslint/eslint.png" alt="ESlint"></li>
   <li>JWT</li>
   <li>Postman</li>
   <li>БЭМ</li>
@@ -42,7 +46,7 @@ Backend
   <li>Grid</li>
 </ul>
 
-# Что было сделано:
+## Что было сделано:
 
 <ul>
   <li>Настроена инфраструктура и создан сервер на express</li>
@@ -55,6 +59,10 @@ Backend
   <li>Проработаны авторизованные и неавторизованные состояния, сохранение фильмов в профиле</li>
   <li>Полученные фильмы фильтруются на стороне клиента</li>
 </ul>
+
+## Статус проекта:
+
+Завершен.
 
 # Getting Started with Create React App
 
