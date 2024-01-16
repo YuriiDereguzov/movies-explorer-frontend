@@ -14,7 +14,7 @@ Frontend
 
 [GitHub] — https://github.com/YuriiDereguzov/movies-explorer-frontend
 
-[Deploy] — https://kinopoisk.nomoredomainsrocks.ru
+[Deploy] — https://kinopoisk.nomoredomainsrocks.ru (залит на Yandex Cloud. ВМ временно остновлена)
 
 Backend
 
